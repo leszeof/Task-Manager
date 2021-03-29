@@ -17,15 +17,16 @@
 
     <main class="content">
       <section class="calendar">
-        <!-- стрелки + год -->
+
         <div class="calendar-controls">
+          <!-- year controls -->
           <div class="calendar-controls__row">
             <button id="year-left-arrow" class="calendar-controls__arrow-left" type="button"></button>
             <h2 id="year" class="current-month">2021</h2>
             <button id="year-right-arrow" class="calendar-controls__arrow-right" type="button"></button>
           </div>
 
-          <!-- стрелки + месяц -->
+          <!-- month controls -->
           <div class="calendar-controls__row">
             <button id="month-left-arrow" class="calendar-controls__arrow-left" type="button"></button>
             <h2 id="month" class="current-month"></h2>
@@ -33,7 +34,17 @@
           </div>
         </div>
 
-        <ul></ul>
+        <!-- Week days -->
+        <ul class="calendar__week-days-list">
+          <li class="calendar__week-day">Пн</li>
+          <li class="calendar__week-day">Вт</li>
+          <li class="calendar__week-day">Ср</li>
+          <li class="calendar__week-day">Чт</li>
+          <li class="calendar__week-day">Пт</li>
+          <li class="calendar__week-day">Сб</li>
+          <li class="calendar__week-day">Вс</li>
+        </ul>
+
         <ul></ul>
       </section>
 

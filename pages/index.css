@@ -1,4 +1,4 @@
-/* общие стили */
+/* Global styles */
 @import url("../vendor/normalize.css");
 @import url("../fonts/font.css");
 @import url("../blocks/body/body.css");
@@ -10,7 +10,7 @@
 @import url("../blocks/header/__title/header__title.css");
 @import url("../blocks/header/__add-button/header__add-button.css");
 
-/*Календарь*/
+/* Calendar */
 @import url("../blocks/calendar/calendar.css");
   /* calendar-controls */
 @import url("../blocks/calendar-controls/calendar-controls.css");
@@ -18,3 +18,7 @@
 @import url("../blocks/calendar-controls/__row/calendar-controls__row.css");
 @import url("../blocks/calendar-controls/__arrow-left/calendar-controls__arrow-left.css");
 @import url("../blocks/calendar-controls/__arrow-right/calendar-controls__arrow-right.css");
+
+/* days and dates */
+@import url("../blocks/calendar/__week-days-list/calendar__week-days-list.css");
+@import url("../blocks/calendar/__week-day/calendar__week-day.css");
