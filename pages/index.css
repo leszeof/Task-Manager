@@ -29,7 +29,7 @@
 @import url("../blocks/calendar/__dates-list/calendar__dates-list.css");
 @import url("../blocks/calendar/__date/calendar__date.css");
 
-  /* active day and today day */
+  /* active day, today day and tasked day */
 @import url("../blocks/calendar/__date/_active/calendar__date_active.css");
 @import url("../blocks/today/today.css");
 @import url("../blocks/tasked-day/tasked-day.css");
