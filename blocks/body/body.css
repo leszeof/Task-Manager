@@ -1,0 +1,7 @@
+.body {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #0019ffbf, #cc65c5);
+  font-family: 'Inter', 'Arial', sans-serif;
+}
