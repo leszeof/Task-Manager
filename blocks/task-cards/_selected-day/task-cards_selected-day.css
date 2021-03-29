@@ -1,0 +1,15 @@
+.task-cards_selected-day {
+  z-index: 3;
+  /* visibility: hidden; */
+  /* display: none; */
+
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+
+  /* position: fixed;
+  bottom: 172px;
+  width: 375px; */
+}

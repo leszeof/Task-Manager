@@ -1,0 +1,21 @@
+.task-cards__delete-button {
+    display: flex;
+    background-image: url('../../../images/delete-icon-red.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    mix-blend-mode: normal;
+    outline-style: none;
+    border: none;
+}
+
+.task-cards__delete-button:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
