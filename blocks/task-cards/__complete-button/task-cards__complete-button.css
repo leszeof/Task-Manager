@@ -1,0 +1,18 @@
+.task-cards__complete-button {
+    background-image: url('../../../images/complete-icon-grey.svg');
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 23px;
+    height: 23px;
+    mix-blend-mode: normal;
+    border: none;
+    outline-style: none;
+    padding: 0;
+}
+
+.task-cards__complete-button:hover {
+    cursor: pointer;
+    background-image: url('../../../images/complete-icon-green.svg');
+}

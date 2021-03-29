@@ -1,0 +1,25 @@
+.popup-event-preview__title {
+  position: relative;
+  margin: 0 0 12px 0;
+  max-width: 240px;
+  font-style: normal;
+  /* padding-left: 30px; */
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+  text-align: justify;
+  color: #050505;
+}
+
+.popup-event-preview__title::after {
+  /* content: ''; */
+  position: absolute;
+  width: 99px;
+  height: 3px;
+  right: 34px;
+  top: 8px;
+  mix-blend-mode: normal;
+  opacity: .36;
+  background-color: #979797;
+}

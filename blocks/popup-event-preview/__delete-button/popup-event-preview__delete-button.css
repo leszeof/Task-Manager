@@ -1,0 +1,28 @@
+.popup-event-preview__delete-button {
+  display: block;
+  width: 335px;
+  margin-left: -19px;
+  margin-top: auto;
+  box-sizing: border-box;
+  padding: 18px 20px 18px 20px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 13px;
+  border: none;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  background-color: #FF5C5C;
+  background-image: url('../../../images/delete-icon-white.svg');
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: 103px 11px;
+  cursor: pointer;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.popup-event-preview__delete-button:hover {
+  opacity: .5;
+}

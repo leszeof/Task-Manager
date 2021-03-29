@@ -58,11 +58,29 @@
       </section>
     </main>
   </div>
-
-  <section></section>
-  <section>
-    <form action=""></form>
+  <!-- popup preview current task -->
+  <section class="popup popup-event-preview">
+    <div class="popup-container">
+      <button class="popup__close-button popup__close-button_event-preview" type="button" name="close-button"></button>
+      <h2 class="popup-event-preview__title popup-event-preview__title_type_complete"></h2>
+      <div class="popup-event-preview__info-wrapper">
+        <span class="popup-event-preview__preview-date"></span>
+        <div class="task-cards__dot"></div>
+        <span class="popup-event-preview__preview-time"></span>
+      </div>
+      <p class="popup-event-preview__event-description"></p>
+      <div class="popup-event-preview__row">
+        <button class="task-cards__complete-button" type="button" name="complete-button"></button>
+        <label class="popup-event-preview__label">не выполнено</label>
+      </div>
+      <button class="popup-event-preview__delete-button" type="button" name="delete-button">Удалить</button>
+    </div>
   </section>
+
+  <!-- popup add new task -->
+  <section></section>
+
+
   <template></template>
   <template></template>
   <template></template>

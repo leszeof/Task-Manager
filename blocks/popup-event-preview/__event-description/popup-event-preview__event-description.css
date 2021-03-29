@@ -1,0 +1,10 @@
+.popup-event-preview__event-description {
+  margin: 0;
+  box-sizing: border-box;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  /* max-width: 285px; */
+  line-height: 20px;
+  color: #050505;
+}

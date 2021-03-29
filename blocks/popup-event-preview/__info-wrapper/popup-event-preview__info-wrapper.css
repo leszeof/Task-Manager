@@ -1,0 +1,15 @@
+.popup-event-preview__info-wrapper {
+  display: flex;
+  /* padding: 0 21px 30px 19px; */
+  padding: 10px 10px 10px 10px;
+  font-style: normal;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  background-image: url(../../../images/calendar-icon-black.svg);
+  background-size: 28px 28px;
+  background-repeat: no-repeat;
+  background-position: 2px 4px;
+  color: #050505;
+}
