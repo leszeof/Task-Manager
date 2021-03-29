@@ -9,3 +9,12 @@
 @import url("../blocks/header/header.css");
 @import url("../blocks/header/__title/header__title.css");
 @import url("../blocks/header/__add-button/header__add-button.css");
+
+/*Календарь*/
+@import url("../blocks/calendar/calendar.css");
+  /* calendar-controls */
+@import url("../blocks/calendar-controls/calendar-controls.css");
+@import url("../blocks/current-month/current-month.css");
+@import url("../blocks/calendar-controls/__row/calendar-controls__row.css");
+@import url("../blocks/calendar-controls/__arrow-left/calendar-controls__arrow-left.css");
+@import url("../blocks/calendar-controls/__arrow-right/calendar-controls__arrow-right.css");

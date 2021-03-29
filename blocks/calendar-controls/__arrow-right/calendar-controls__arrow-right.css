@@ -1,0 +1,19 @@
+.calendar-controls__arrow-right {
+  padding: 0;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  background-image: url('../../../images/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}

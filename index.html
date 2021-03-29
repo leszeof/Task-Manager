@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Manager</title>
+  <link rel="stylesheet" href="./pages/index.css">
   <script src="./scripts/index.js" defer></script>
 </head>
 <body class="body">
@@ -13,10 +14,25 @@
       <h1 class="header__title">Task Manager</h1>
       <button class="header__add-button">Создать задание</button>
     </header>
-    <main class="main">
+
+    <main class="content">
       <section class="calendar">
-        <div></div>
-        <div></div>
+        <!-- стрелки + год -->
+        <div class="calendar-controls">
+          <div class="calendar-controls__row">
+            <button id="year-left-arrow" class="calendar-controls__arrow-left" type="button"></button>
+            <h2 id="year" class="current-month">2021</h2>
+            <button id="year-right-arrow" class="calendar-controls__arrow-right" type="button"></button>
+          </div>
+
+          <!-- стрелки + месяц -->
+          <div class="calendar-controls__row">
+            <button id="month-left-arrow" class="calendar-controls__arrow-left" type="button"></button>
+            <h2 id="month" class="current-month"></h2>
+            <button id="month-right-arrow" class="calendar-controls__arrow-right" type="button"></button>
+          </div>
+        </div>
+
         <ul></ul>
         <ul></ul>
       </section>

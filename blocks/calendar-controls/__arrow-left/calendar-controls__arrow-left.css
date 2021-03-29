@@ -1,0 +1,14 @@
+.calendar-controls__arrow-left {
+  padding: 0;
+  height: 24px;
+  width: 24px;
+
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none;
+
+  background-image: url('../../../images/arrow.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
