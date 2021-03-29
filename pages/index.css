@@ -20,7 +20,6 @@
 @import url("../blocks/calendar-controls/__arrow-right/calendar-controls__arrow-right.css");
 
 /* week days and dates */
-
   /* week days */
 @import url("../blocks/calendar/__week-days-list/calendar__week-days-list.css");
 @import url("../blocks/calendar/__week-day/calendar__week-day.css");
@@ -34,8 +33,28 @@
 @import url("../blocks/today/today.css");
 @import url("../blocks/tasked-day/tasked-day.css");
 
+/* task cards */
+
+
 /* popups */
   /* add new task popup */
+@import url("../blocks/popup/popup.css");
+@import url("../blocks/popup/__new-task-form/popup__new-task-form.css");
+@import url("../blocks/popup/__form_title/popup__form-title.css");
+@import url("../blocks/popup/__input/popup__input.css");
+@import url("../blocks/popup/__label/popup__label.css");
+@import url("../blocks/popup/__date-inputs/popup__date-inputs.css");
+@import url("../blocks/popup/__date/popup__date.css");
+@import url("../blocks/popup/__month/popup__month.css");
+@import url("../blocks/popup/__year/popup__year.css");
+@import url("../blocks/popup/__add-button/popup__add-button.css");
+@import url("../blocks/popup/__color/popup__color.css");
+@import url("../blocks/popup/_new-task/popup_new-task.css");
+@import url("../blocks/popup/__label-text/popup__label-text.css");
+@import url("../blocks/popup/__pseudo-input/popup__pseudo-input.css");
+@import url("../blocks/popup/__label/_pseudo/popup__label_pseudo.css");
+@import url("../blocks/popup/__question-button/popup__question-button.css");
+@import url("../blocks/popup/__row/popup__row.css");
 @import url("../blocks/popup/__close-button/popup__close-button.css");
 
   /* preview task popup */
@@ -48,8 +67,9 @@
 @import url("../blocks/popup-event-preview/__event-description/popup-event-preview__event-description.css");
 @import url("../blocks/popup-event-preview/__label/popup-event-preview__label.css");
 @import url("../blocks/popup-event-preview/__delete-button/popup-event-preview__delete-button.css");
-@import url("../blocks/popup/_opened/popup_opened.css");
 @import url("../blocks/popup/__close-button/_event-preview/popup__close-button_event-preview.css");
 @import url("../blocks/popup-event-preview/__row/popup-event-preview__row.css");
 
+/* active popup*/
+@import url("../blocks/popup/_opened/popup_opened.css");
 

@@ -78,7 +78,86 @@
   </section>
 
   <!-- popup add new task -->
-  <section></section>
+  <section class="popup popup_new-task">
+    <form class="popup__new-task-form">
+      <button class="popup__close-button" type="button" name="close-button"></button>
+      <h2 class="popup__form-title">Создать новое задание</h2>
+      <label class="popup__label" for="topic">Название</label>
+      <input class="popup__input popup__topic"
+                  type="text"
+                  value=""
+                  name="topic"
+                  id="topic"
+                  placeholder="Название задания"
+                  required
+                  minlength="2"
+                  maxlength="40">
+      <!-- <span id="description-error" class="popup__input-error"></span> -->
+      <label class="popup__label" for="description">Описание</label>
+      <input class="popup__input popup__description"
+              id="description"
+              type="text"
+              value=""
+              name="description"
+              placeholder="Описание задания"
+              required
+              minlength="2"
+              maxlength="40">
+      <!-- <span id="description-error" class="popup__input-error"></span> -->
+      <fieldset class="popup__date-inputs">
+        <input class="popup__input popup__date"
+                type="number"
+                name="date"
+                id="date"
+                placeholder="День"
+                min="1"
+                max="31"
+                required>
+        <!-- <span id="date-error" class="popup__input-error"></span> -->
+        <input class="popup__input popup__month"
+                type="number"
+                id="month"
+                name="month"
+                min="1"
+                max="12"
+                placeholder="Месяц"
+                required>
+        <!-- <span id="month-error" class="popup__input-error"></span> -->
+        <input class="popup__input popup__year"
+                id="year"
+                type="number"
+                name="year"
+                placeholder="Год"
+                min="2021"
+                max="2041"
+                required>
+        <!-- <span id="year-error" class="popup__input-error"></span> -->
+      </fieldset>
+      <label class="popup__label" for="time">Время</label>
+      <input class="popup__input popup__time"
+              id="time"
+              type="time"
+              name="time"
+              placeholder="00:00"
+              min="00:00"
+              max="23:59"
+              required>
+      <!-- <span id="time-error" class="popup__input-error"></span> -->
+      <label class="popup__label popup__label_pseudo" for="color">
+        <input class="popup__color"
+                id="color"
+                type="color"
+                value="#E3B65B"
+                name="color">
+        <div class="popup__row">
+            <span class="popup__label-text">Выберите цвет</span>
+            <button type="button" class="popup__question_button"></button>
+        </div>
+        <span class="popup__pseudo-input"></span>
+      </label>
+      <button class="popup__add-button" type="submit">Добавить</button>
+    </form>
+  </section>
 
 
   <template></template>
