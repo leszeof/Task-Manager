@@ -20,4 +20,15 @@ import {
   deleteEventPreviewButton,
   completeEventPreviewPopupButton,
   months,
-} from './utils/constants.js'
+} from './utils/constants.js';
+
+
+// Functions
+  // open popup
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+  // close popup
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
