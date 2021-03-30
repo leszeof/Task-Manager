@@ -21,3 +21,5 @@ const popupDescription = eventPreviewPopup.querySelector('.popup-event-preview__
 const closeEventPreviewPopupButton = eventPreviewPopup.querySelector('.popup__close-button_event-preview');
 const deleteEventPreviewButton = document.querySelector('.popup-event-preview__delete-button');
 const completeEventPreviewPopupButton = eventPreviewPopup.querySelector(".task-cards__complete-button");
+
+const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
