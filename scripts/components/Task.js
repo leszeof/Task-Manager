@@ -21,9 +21,16 @@ export default class Task {
     return newTaskInfo;
   }
 
-  _generateTaskDate() {}
+  _generateTaskDate() {
+    const dateParts = `${this._year}, ${this._month}, ${this._date}, ${this._time}:00`;
 
-  _generateHashCode() {}
+    return new Date(dateParts);
+  }
+
+  _generateHashCode() {
+    //может стоит сделать так: new Date().toString()
+    return this._hashCode(this._generateTaskDate());
+  }
 
   _hashCode(data) {
     return [...data.split('')].reduce((hash, char) => {
