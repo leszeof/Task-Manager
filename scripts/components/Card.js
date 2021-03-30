@@ -4,6 +4,7 @@ export default class Card {
     this._cardSettingsBinding(cardSettings);
   }
 
+  // task data for current card
   _taskDataBinding(taskData) {
     this._titleText = taskData.title;
     this._descriptionText = taskData.description;
@@ -13,6 +14,7 @@ export default class Card {
     this._isCompleted = taskData.isCompleted;
   }
 
+  // card elements (html), template and classes
   _cardSettingsBinding(cardSettings) {
     // template
     this._templateElem = document.querySelector(cardSettings.cardTemplateSelector);
@@ -31,16 +33,29 @@ export default class Card {
     this._completeTitleActiveClass = cardSettings.completeTaskTitleClass;
   }
 
+  // prepare card data
+  _getCardData() {
+    return {
+      title: this._titleText,
+      description: this._descriptionText,
+      month: this._getMonth(),
+      date: this._getDay(),
+      hours: this._getPrettyNums(this._getHours()),
+      minutes: this._getPrettyNums(this._getMinutes()),
+      hash: this._hash,
+      isCompleted: this._isCompleted,
+    }
+  }
 
-
+  // return html view of task (card)
   generateCard() {
-    // get card data
+    // get card data from current task data
     const cardData = this._getCardData();
 
     // fill card with data
     this._renderCard(cardData);
 
-    // set event listeners
+    // set event listeners on card
     this._setEventListeners();
 
     return this._cardElem;
