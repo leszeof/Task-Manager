@@ -22,17 +22,20 @@ export default class Task {
     return newTaskInfo;
   }
 
+  // generate date obj for task from constructor parts
   _generateTaskDate() {
     const dateParts = `${this._year}, ${this._month}, ${this._date}, ${this._time}:00`;
 
     return new Date(dateParts);
   }
 
+  // get hash-code for every task
   _generateHashCode() {
     //может стоит сделать так: new Date().toString()
     return this._hashCode(this._generateTaskDate());
   }
 
+  // hash-code generator
   _hashCode(data) {
     return [...data.split('')].reduce((hash, char) => {
       const charCode = char.charCodeAt(0);
