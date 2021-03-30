@@ -30,4 +30,19 @@ export default class Card {
     this._completeButtonActiveClass = cardSettings.completeButtonActiveClass;
     this._completeTitleActiveClass = cardSettings.completeTaskTitleClass;
   }
+
+
+
+  generateCard() {
+    // get card data
+    const cardData = this._getCardData();
+
+    // fill card with data
+    this._renderCard(cardData);
+
+    // set event listeners
+    this._setEventListeners();
+
+    return this._cardElem;
+  }
 }
