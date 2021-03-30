@@ -8,7 +8,18 @@ export default class Task {
     this._time = time;
   }
 
-  getFullTaskData() {}
+  getFullTaskData() {
+    const newTaskInfo = {
+      'title' : this._title,
+      'description' : this._description,
+      'dateObj' : this._generateTaskDate(),
+      'hash': this._generateHashCode(),
+      'isCompleted': false,
+      'isDeleted': false, //! может и не нужно
+    }
+
+    return newTaskInfo;
+  }
 
   _generateTaskDate() {}
 
