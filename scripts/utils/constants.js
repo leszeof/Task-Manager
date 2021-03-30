@@ -11,3 +11,13 @@ const yearInput = newTaskFormElement.querySelector('.popup__year');
 const timeInput = newTaskFormElement.querySelector('.popup__time');
 const colorInput = newTaskFormElement.querySelector('.popup__color');
 const colorPseudoInput = newTaskFormElement.querySelector('.popup__pseudo-input');
+
+// Preview task popup
+const eventPreviewPopup = document.querySelector('.popup-event-preview');
+const popupTitleElem = eventPreviewPopup.querySelector('.popup-event-preview__title');
+const popupDateElem = eventPreviewPopup.querySelector('.popup-event-preview__preview-date');
+const popupTimeElem = eventPreviewPopup.querySelector('.popup-event-preview__preview-time');
+const popupDescription = eventPreviewPopup.querySelector('.popup-event-preview__event-description');
+const closeEventPreviewPopupButton = eventPreviewPopup.querySelector('.popup__close-button_event-preview');
+const deleteEventPreviewButton = document.querySelector('.popup-event-preview__delete-button');
+const completeEventPreviewPopupButton = eventPreviewPopup.querySelector(".task-cards__complete-button");
