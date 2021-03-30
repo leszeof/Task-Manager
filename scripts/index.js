@@ -20,7 +20,9 @@ import {
   deleteEventPreviewButton,
   completeEventPreviewPopupButton,
   months,
+  cardSettings,
 } from './utils/constants.js';
+import Card from './components/Card.js';
 
 
 // Functions

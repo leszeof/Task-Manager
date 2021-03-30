@@ -23,3 +23,22 @@ export const deleteEventPreviewButton = document.querySelector('.popup-event-pre
 export const completeEventPreviewPopupButton = eventPreviewPopup.querySelector(".task-cards__complete-button");
 
 export const months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
+// classes and selectors for Card class
+export const cardSettings = {
+  // селекторы
+  cardSelector : '.task-cards__card_selected-day',
+  titleSelector : '.task-cards__task',
+  daySelector : '.task-cards__date',
+  timeSelector : '.task-cards__time',
+  completeButtonSelector : '.task-cards__complete-button',
+  deleteButtonSelector : '.task-cards__delete-button',
+  detailsButtonSelector : '.task-cards__details',
+
+  // темплейты
+  cardTemplateSelector : '.template-task-card-big',
+
+  // классы
+  completeButtonActiveClass : 'task-cards__complete-button_active',
+  completeTaskTitleClass : 'task-cards__task_complete',
+}
