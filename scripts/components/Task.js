@@ -8,6 +8,7 @@ export default class Task {
     this._time = time;
   }
 
+  // return data obj
   getFullTaskData() {
     const newTaskInfo = {
       'title' : this._title,
