@@ -91,4 +91,22 @@ export default class Card {
     this._dayAndMonthElem.textContent = `${cardData.month} ${cardData.date}`;
     this._timeElem.textContent = `${cardData.hours}:${cardData.minutes}`;
   }
+
+  // set event listeners on card elems
+  _setEventListeners() {
+    // listener for "complete box" button
+    this._completeButtonElem.addEventListener('click', () => {
+      this._markAsDone();
+    });
+
+    // listener for "show details" button
+    this._detailsButtonElem.addEventListener('click', () => {
+      this._openCardDetails();
+    })
+
+    // listener for "delete" button
+    this._deleteButtonElem.addEventListener('click', () => {
+      this._deleteButtonHandler();
+    })
+  }
 }
