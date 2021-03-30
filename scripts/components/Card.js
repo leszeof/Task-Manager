@@ -47,7 +47,23 @@ export default class Card {
     }
   }
 
-  // return html view of task (card)
+  _getHours() {
+    return this._dateObj.getHours();
+  }
+
+  _getMinutes() {
+    return this._dateObj.getMinutes();
+  }
+
+  _getDay() {
+    return this._dateObj.getDate();
+  }
+
+  _getMonth() {
+    return months[this._dateObj.getMonth()];
+  }
+
+  // return html presentation of task (card)
   generateCard() {
     // get card data from current task data
     const cardData = this._getCardData();
@@ -61,7 +77,7 @@ export default class Card {
     return this._cardElem;
   }
 
-  // render card elements (view) with data
+  // fill card elements (view) with data
   _renderCard(cardData) {
     this._titleElem.textContent = cardData.title;
     this._dayAndMonthElem.textContent = `${cardData.month} ${cardData.date}`;
