@@ -109,4 +109,10 @@ export default class Card {
       this._deleteButtonHandler();
     })
   }
+
+  // event handlers
+  _markAsDone() {
+    this._completeButtonElem.classList.toggle(this._completeButtonActiveClass);
+    this._titleElem.classList.toggle(this._completeTitleActiveClass);
+  }
 }
