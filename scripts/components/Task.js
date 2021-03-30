@@ -14,5 +14,12 @@ export default class Task {
 
   _generateHashCode() {}
 
-  _hashCode(data) {}
+  _hashCode(data) {
+    return [...data.split('')].reduce((hash, char) => {
+      const charCode = char.charCodeAt(0);
+      const code = ((hash<<3) - hash * 2)+charCode;
+
+      return +code & +code;
+    }, 0).toString();
+  }
 }
