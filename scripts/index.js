@@ -23,6 +23,7 @@ import {
   cardSettings,
 } from './utils/constants.js';
 import Card from './components/Card.js';
+import Task from './components/Task.js';
 
 
 // Functions
