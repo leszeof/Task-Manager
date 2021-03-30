@@ -60,4 +60,11 @@ export default class Card {
 
     return this._cardElem;
   }
+
+  // render card elements (view) with data
+  _renderCard(cardData) {
+    this._titleElem.textContent = cardData.title;
+    this._dayAndMonthElem.textContent = `${cardData.month} ${cardData.date}`;
+    this._timeElem.textContent = `${cardData.hours}:${cardData.minutes}`;
+  }
 }
