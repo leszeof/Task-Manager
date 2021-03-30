@@ -33,6 +33,14 @@ export default class Card {
     this._completeTitleActiveClass = cardSettings.completeTaskTitleClass;
   }
 
+  // return template node clone for card
+  _getEmptyCardClone(selector) {
+    const cardItemTemplate = this._templateElem.content;
+    const emptyCardElement = cardItemTemplate.querySelector(selector).cloneNode(true);
+
+    return emptyCardElement;
+  }
+
   // prepare card data
   _getCardData() {
     return {
