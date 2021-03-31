@@ -60,12 +60,12 @@ export default class Calendar {
     //! ЕЩЕ НАДО!
   }
 
-  // main function for calendar table
+  // main function for calendar table initialization
   createCalendarTable(year, month) {
     // prepare data for calendar
     this._prepareDataForCalendar(year, month);
 
-    // render clendar
+    // render calendar
     this._renderCalendar();
   }
 
@@ -265,8 +265,29 @@ export default class Calendar {
     this._openSheduleForSelectedMonth();
   }
 
+    // change year
+  _changeYear(arrowId) {
+    const yearValue = arrowId === 'year-left-arrow' ? +this._year - 1 : +this._year + 1;
+
+    const monthValue = this._monthNumber;
+
+    // обнуляем верстку календаря
+    this._resetCalendarTableRender();
+
+    // создаем новый календарь
+    this.createCalendarTable(yearValue, monthValue);
+
+    // открываем таски на новый месяц
+    this._openSheduleForSelectedMonth();
+  }
+
 
 }
+
+//! идея по упрощению:
+// вынести все прочие this моменты в одну функцию (число дней в месяце, какой день "today" и тд)
+  // например засунуть их в _prepareDataForCalendar
+  // разбить _changeMonth и _changeYear на мелкие кусочки!
 
 
 // карта использования функций в календаре
