@@ -150,3 +150,26 @@ export default class Card {
     }
   }
 }
+
+// карта использования функций
+/*
+constructor
+  _taskDataBinding
+  _cardSettingsBinding
+
+generateCard
+  _getCardData
+    _getCardData
+      _getHours
+      _getMinutes
+      _getDay
+      _getMonth
+
+  _renderCard
+
+  _setEventListeners
+    _markAsDone
+    _openCardDetails
+    _deleteButtonHandler
+
+*/
