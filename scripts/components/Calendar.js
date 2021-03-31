@@ -294,6 +294,36 @@ export default class Calendar {
     }
   }
 
+  _openSheduleForSelectedDay(dayNum) {
+    // настройка окна с тасками (заголовки)
+    this._renderTitles(dayNum);
+
+    // подготовка данных к рендерингу (фильтрация + сортировка тасков на выбранный день)
+    const dataToRender = this._prepareDataForCardsRendering(dayNum);
+
+    // сделать рендеринг данных (правильные таски => карточки)
+    const readyCards = this.renderCards(dataToRender);
+
+    // передаем их на отрисовку
+    this._refreshTaskList(readyCards);
+  }
+
+  _openSheduleForSelectedMonth() {
+    // снимаем отметку с активного дня
+    this._toggleActiveDay();
+
+    // настройка окна (тексты)
+    this._renderTitles(this._year);
+
+    // подготовка данных к рендерингу (фильтрация + сортировка тасков на выбранный месяц)
+    const dataToRender = this._prepareDataForCardsRendering();
+
+    // сделать рендеринг данных (правильные таски => карточки)
+    const readyCards = this.renderCards(dataToRender);
+
+    // передаем их на отрисовку
+    this._refreshTaskList(readyCards);
+  }
 
 }
 
@@ -325,6 +355,7 @@ constructor
 
     4)_openSheduleForSelectedMonth
 
+
 createCalendarTable
  1) _prepareDataForCalendar
       _findAllDaysWithTasksForSelectedPeriod
@@ -339,6 +370,22 @@ createCalendarTable
         _insertDateCells
           _getDateCellClone
         _markTodayInCalendar
+
+_openSheduleForSelectedDay
+  _renderTitles
+  _prepareDataForCardsRendering
+  renderCards
+  _refreshTaskList
+
+_openSheduleForSelectedMonth
+  _toggleActiveDay
+  _renderTitles
+  _prepareDataForCardsRendering
+  renderCards
+  _refreshTaskList
+
+
+
 
 
 */
