@@ -69,7 +69,6 @@ export const calendarSettings = {
   activeDayClass : 'calendar__date_active',
   taskedDayClass: 'tasked-day',
 
-  //! надо создать отдельный класс для модальных окон, чтобы разгрузить класс Календарь
   // модальные окна
     // дела на месяц
   tasksForMonthWindowSelector : '.task-cards_selected-month',
