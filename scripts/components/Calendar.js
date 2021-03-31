@@ -60,7 +60,7 @@ export default class Calendar {
     this._prepareDataForCalendar(year, month);
 
     // render clendar
-    this._renderCalendarTable();
+    this._renderCalendar();
   }
 
   // prepare data for calendar rendering
@@ -68,7 +68,7 @@ export default class Calendar {
     // определяем количество дней в месяце
     this._totalDaysInMonth = 32 - new Date(year, month, 32).getDate();
 
-    // определяет день недели с которой начнется месяц
+    // определяет номер дня недели с которой начнется месяц
     this._serialNumOfFirstDayInMonth = new Date(year, month).getUTCDay();
 
     // подготовливаем данные для this и рендеринга
@@ -77,7 +77,7 @@ export default class Calendar {
     this._monthName = months[this._monthNumber];
       //! наверное лучше будет как то привязать к классу массив месяцев (или передать или создать внутри)
 
-    // подготовка к подсветке дней в которых есть задания
+    // собираем инфу про данные о днях в которых есть таски
     this._findAllDaysWithTasksForSelectedPeriod();
   }
 
@@ -87,7 +87,7 @@ export default class Calendar {
     this._listOfDaysWithTasks = this._getSerialNumbersOfDaysWithTasks();
 
     // array with unique serial numbers of days with tasks
-    this._listOfUniqueDaysWithTasks = this._leaveOnlyUniqueDaysWithTask();
+    this._listOfUniqueDaysWithTasks = this._getUniqueSerialNumbers();
   }
 
   // return array of days with tasks
@@ -103,10 +103,98 @@ export default class Calendar {
   }
 
   // return array with unique serial numbers of days with tasks
-  _leaveOnlyUniqueDaysWithTask() {
+  _getUniqueSerialNumbers() {
     const uniqueSetOfDaysWithTasks = new Set(this._listOfDaysWithTasks);
 
     return Array.from(uniqueSetOfDaysWithTasks); // array with unique numbers
   }
 
+  _renderCalendar() {
+    // заполняем заголовки календаря
+    this._renderCalendarHeaders();
+
+    // начинаем непосредственное заполнение ячеек
+    this._renderCalendarTable();
+
+    // если отрисованный месяц и год - это текущий, отметить в нем сегодняшний день
+    if (this._monthNumber == new Date().getMonth() &&
+        this._year == new Date().getFullYear()) {
+      this._markTodayInCalendar();
+    }
+  }
+
+  // render calendar titles
+  _renderCalendarHeaders() {
+    // подставляем текущий год как нынешний
+    this._currentYearElem.textContent = this._year;
+
+    // подставляем текущий месяц как нынешний
+    this._currentMonthElem.textContent = this._monthName;
+  }
+
+  // render calendar cells
+  _renderCalendarTable() {
+    // сначала закинем пустые ячейки, если они есть
+    this._insertBlankСells();
+
+    // заполняем днями-датами все остальные ячейки
+    this._insertDateCells();
+  }
+
+  _insertBlankСells() {
+    if (this._serialNumOfFirstDayInMonth !== 0) {
+
+      for (let i = 0; i < this._serialNumOfFirstDayInMonth; i++) {
+        // создаем пустые ячейки и размещаем в контейнере
+        const emptyCell = document.createElement('li');
+        this._calendarDaysContainer.append(emptyCell);
+      }
+    }
+  }
+
+  _insertDateCells() {
+    for (let i = 1; i <= this._totalDaysInMonth; i++) {
+      // берем темплейт и клонируем его
+      const dateCell = this._getDateCellClone();
+      // const dateCell = this._dateCellElem;
+
+      // вносим номер дня месяца текстом в ячейку
+      dateCell.textContent = i;
+
+      // если на этом дне есть задания - пометим его
+        // если массив дат с заданиями не пустой И номер i дня есть в массиве уникальных дат (дни с заданиями)
+      if (this._listOfDaysWithTasks && this._listOfUniqueDaysWithTasks.includes(i)) {
+        dateCell.classList.toggle(this._taskedDayClass)
+      }
+
+      // закидываем в верстку ячейку
+      this._calendarDaysContainer.append(dateCell);
+    }
+  }
+
+  // return clone of date cell template
+  _getDateCellClone() {
+    const emptyDateCell = this._dateCellTemplateElem.content.querySelector(`.${this._dayClass}`).cloneNode(true);
+
+    return emptyDateCell;
+  }
+
 }
+
+
+// карта использования функций в календаре
+
+/*
+createCalendarTable
+  1) _prepareDataForCalendar
+      _findAllDaysWithTasksForSelectedPeriod
+        _getSerialNumbersOfDaysWithTasks
+        _getUniqueSerialNumbers
+
+  2) _renderCalendar
+      _renderCalendarHeaders
+      _fillCalendarTableWithCells
+        _insertBlankСells
+        _insertDateCells
+          _getDateCellClone
+*/
