@@ -33,7 +33,7 @@ export default class Card {
     this._completeTitleActiveClass = cardSettings.completeTaskTitleClass;
   }
 
-  // return template node clone for card
+  // return template node-clone for card element
   _getEmptyCardClone(selector) {
     const cardItemTemplate = this._templateElem.content;
     const emptyCardElement = cardItemTemplate.querySelector(selector).cloneNode(true);
@@ -41,7 +41,7 @@ export default class Card {
     return emptyCardElement;
   }
 
-  // prepare card data
+  // prepare card data for further rendering
   _getCardData() {
     return {
       title: this._titleText,
@@ -85,7 +85,7 @@ export default class Card {
     return this._cardElem;
   }
 
-  // fill card elements (view) with data
+  // fill elements in card with data
   _renderCard(cardData) {
     this._titleElem.textContent = cardData.title;
     this._dayAndMonthElem.textContent = `${cardData.month} ${cardData.date}`;
@@ -111,8 +111,20 @@ export default class Card {
   }
 
   // event handlers
+    // "complete" button
   _markAsDone() {
     this._completeButtonElem.classList.toggle(this._completeButtonActiveClass);
     this._titleElem.classList.toggle(this._completeTitleActiveClass);
+  }
+
+    // "view details" button
+  _openCardDetails() {
+    // get full card data
+    const cardData = this._getCardData();
+
+    // fill preview popup with card data
+    generatePreviewPopup(cardData);
+
+    openPopup(eventPreviewPopup);
   }
 }
