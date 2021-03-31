@@ -24,6 +24,7 @@ import {
 } from './utils/constants.js';
 import Card from './components/Card.js';
 import Task from './components/Task.js';
+import Calendar from './components/Calendar.js';
 
 
 // Functions
