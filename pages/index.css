@@ -89,3 +89,5 @@
 /* active popup*/
 @import url("../blocks/popup/_opened/popup_opened.css");
 
+/* custom scroll bar */
+@import url("../blocks/scroll/scroll.css");

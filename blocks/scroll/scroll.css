@@ -1,0 +1,23 @@
+/* Размеры скроллбара */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #ffffff00;
+}
+
+/* Ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+  background-color: #f9f9f9;
+}
+
+/* Трек поле скроллбара */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+  border-radius: 10px;
+  background-color: #c23dff;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
