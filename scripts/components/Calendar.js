@@ -281,12 +281,26 @@ export default class Calendar {
     this._openSheduleForSelectedMonth();
   }
 
+    // toogle day as active on click
+  _toggleActiveDay(currentDateCell) {
+    const previousActiveDateCell = this._calendarDaysContainer.querySelector(`.${this._activeDayClass}`);
+
+    if (previousActiveDateCell) {
+      previousActiveDateCell.classList.toggle(this._activeDayClass);
+    }
+
+    if (currentDateCell) {
+      currentDateCell.classList.toggle(this._activeDayClass);
+    }
+  }
+
 
 }
 
 //! идея по упрощению:
 // вынести все прочие this моменты в одну функцию (число дней в месяце, какой день "today" и тд)
   // например засунуть их в _prepareDataForCalendar
+  // достать из:
   // разбить _changeMonth и _changeYear на мелкие кусочки!
 
 
