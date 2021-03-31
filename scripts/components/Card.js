@@ -127,4 +127,26 @@ export default class Card {
 
     openPopup(eventPreviewPopup);
   }
+
+  _deleteButtonHandler() {
+    // delete card
+    this._cardElem.remove();
+
+    // delete task from calendar memory using hash
+    memory.deleteTaskFromLocalStorage(this._hash);
+
+    // re-render calendar
+    const day = this._getDay();
+    const cell = document.querySelectorAll('.calendar__date')[day - 1]
+    calendar._updateDateCellStatus(day, cell)
+  }
+
+  //! в теории можно вынести из класса в utils.js
+  _getPrettyNums(time) {
+    if (time < 10) {
+      return `0${time}`
+    } else {
+      return time;
+    }
+  }
 }
