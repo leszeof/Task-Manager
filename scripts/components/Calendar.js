@@ -50,7 +50,9 @@ export default class Calendar {
     this._setEventListeners();
   }
 
-  init() {}
+  init() {
+
+  }
 
   // main function for calendar table
   createCalendarTable(year, month) {
@@ -73,10 +75,38 @@ export default class Calendar {
     this._year = year;
     this._monthNumber = month;
     this._monthName = months[this._monthNumber];
+      //! наверное лучше будет как то привязать к классу массив месяцев (или передать или создать внутри)
 
     // подготовка к подсветке дней в которых есть задания
-    this._daysWithTaskArray = this._getSerialNumbersOfDaysWithTasks();
-    this._uniqueSerialNumbersOfDays = [...new Set(this._daysWithTaskArray)];
+    this._findAllDaysWithTasksForSelectedPeriod();
+  }
+
+  // prepare data for highlighting days with tasks while render calendar
+  _findAllDaysWithTasksForSelectedPeriod() {
+    // find all days with tasks (high % of repetitions in this array)
+    this._listOfDaysWithTasks = this._getSerialNumbersOfDaysWithTasks();
+
+    // array with unique serial numbers of days with tasks
+    this._listOfUniqueDaysWithTasks = this._leaveOnlyUniqueDaysWithTask();
+  }
+
+  // return array of days with tasks
+  _getSerialNumbersOfDaysWithTasks() {
+    const taskArray = memory.getCurrentTasksArray();
+    const arrayOfTasksForSelectedMonth = this._filterTasksByMonth(taskArray);
+
+    const arrayOfDaysWithTasks = arrayOfTasksForSelectedMonth.map(taskObj => {
+      return new Date(taskObj.dateObj).getDate();
+    });
+
+    return arrayOfDaysWithTasks; // array with not unique numbers
+  }
+
+  // return array with unique serial numbers of days with tasks
+  _leaveOnlyUniqueDaysWithTask() {
+    const uniqueSetOfDaysWithTasks = new Set(this._listOfDaysWithTasks);
+
+    return Array.from(uniqueSetOfDaysWithTasks); // array with unique numbers
   }
 
 }
