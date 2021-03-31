@@ -371,16 +371,30 @@ createCalendarTable
           _getDateCellClone
         _markTodayInCalendar
 
+
+
 _openSheduleForSelectedDay
   _renderTitles
+
   _prepareDataForCardsRendering
+    memory.getCurrentTasksArray
+    _filterTasksByDate
+    _sortTasksArray
+
   renderCards
   _refreshTaskList
+
+
 
 _openSheduleForSelectedMonth
   _toggleActiveDay
   _renderTitles
+
   _prepareDataForCardsRendering
+    memory.getCurrentTasksArray
+    _filterTasksByMonth
+    _sortTasksArray
+
   renderCards
   _refreshTaskList
 
