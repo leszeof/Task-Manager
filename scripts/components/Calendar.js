@@ -192,6 +192,48 @@ export default class Calendar {
     allDays[today - 1].classList.add(this._todayClass);
   }
 
+  _setEventListeners() {
+    // месяц, стрелка влево
+    this._monthArrowLeftElem.addEventListener('click', () => {
+      // смена месяца + ре-рендеринг календаря (дат)
+      this._changeMonth(this._monthArrowLeftElem.id);
+    });
+
+    // месяц, стрелка вправо
+    this._monthArrowRightElem.addEventListener('click', () => {
+      // смена месяца + ре-рендеринг календаря (дат)
+      this._changeMonth(this._monthArrowRightElem.id);
+    });
+
+    // год, стрелка влево
+    this._yearArrowLeftElem.addEventListener('click', () => {
+      // смена года + ре-рендеринг календаря (дат)
+      this._changeYear(this._yearArrowLeftElem.id);
+    });
+
+    // год, стрелка вправо
+    this._yearArrowRightElem.addEventListener('click', () => {
+      // смена года + ре-рендеринг календаря (дат)
+      this._changeYear(this._yearArrowRightElem.id);
+    });
+
+    // дни-даты (делегирование на контейнер)
+      // пометить выбранный день + открыть расписание на него
+    this._calendarDaysContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains(this._dayClass)) {
+        const dayCell = event.target;
+        this._toggleActiveDay(dayCell);
+
+        this._openSheduleForSelectedDay(dayCell.textContent);
+      };
+    })
+
+    // открыть расписание на выбранный месяц
+    this._currentMonthElem.addEventListener('click', () => {
+      this._openSheduleForSelectedMonth();
+    })
+  }
+
 }
 
 
@@ -201,6 +243,11 @@ export default class Calendar {
 constructor
   init
   _calendarDataBinding
+    _setEventListeners
+      _changeMonth
+      _changeYear
+      (_toggleActiveDay + _openSheduleForSelectedDay)
+      _openSheduleForSelectedMonth
 
 createCalendarTable
   1) _prepareDataForCalendar
