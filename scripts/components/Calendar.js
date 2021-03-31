@@ -185,7 +185,7 @@ export default class Calendar {
     return emptyDateCell;
   }
 
-  // подсветим сегодняшний день при загрузке и дальнейших переключениях
+  // highlight today day in calendar
   _markTodayInCalendar() {
     const today = new Date().getDate();
     const allDays = this._calendarDaysContainer.querySelectorAll(`.${this._dayClass}`);
@@ -234,6 +234,38 @@ export default class Calendar {
     })
   }
 
+  // Event handlers
+    // change month
+  _changeMonth(arrowId) {
+    const yearValue = this._year;
+    let monthValue = this._monthNumber;
+
+    if (arrowId === 'month-left-arrow') {
+      // при достижении левого предела массива месяцев
+      monthValue = monthValue === 0 ? monthValue = 12 : monthValue = monthValue;
+
+      // погрешность с номерами месяцев, исправляем порядковый номер
+      monthValue = monthValue - 1;
+
+    } else {
+      // при достижении правого предела массива месяцев
+      monthValue = monthValue === 11 ? monthValue = -1 : monthValue = monthValue;
+
+      // погрешность с номерами месяцев, исправляем порядковый номер
+      monthValue = monthValue + 1;
+    }
+
+    // обнуляем верстку календаря
+    this._resetCalendarTableRender();
+
+    // создаем новый календарь
+    this.createCalendarTable(yearValue, monthValue);
+
+    // открываем таски на новый месяц
+    this._openSheduleForSelectedMonth();
+  }
+
+
 }
 
 
@@ -244,18 +276,27 @@ constructor
   init
   _calendarDataBinding
     _setEventListeners
-      _changeMonth
-      _changeYear
-      (_toggleActiveDay + _openSheduleForSelectedDay)
-      _openSheduleForSelectedMonth
+    1)_changeMonth
+        _resetCalendarTableRender
+        createCalendarTable
+        _openSheduleForSelectedMonth
+
+    2)_changeYear
+        _resetCalendarTableRender
+        createCalendarTable
+        _openSheduleForSelectedMonth
+
+    3)(_toggleActiveDay + _openSheduleForSelectedDay)
+
+    4)_openSheduleForSelectedMonth
 
 createCalendarTable
-  1) _prepareDataForCalendar
+ 1) _prepareDataForCalendar
       _findAllDaysWithTasksForSelectedPeriod
         _getSerialNumbersOfDaysWithTasks
         _getUniqueSerialNumbers
 
-  2) _renderCalendar
+ 2) _renderCalendar
       _renderCalendarHeaders
 
       _renderCalendarTable
