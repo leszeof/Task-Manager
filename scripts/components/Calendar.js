@@ -3,6 +3,7 @@ export default class Calendar {
     this._calendarDataBinding(calendarSettings);
   }
 
+  // binding calendar elements and classes
   _calendarDataBinding() {
     // список дней-дат + родительская секция
     this._calendarSection =
@@ -48,4 +49,34 @@ export default class Calendar {
       // ! в любом другом месте его вызов (например в createCalendar или_renderCalendar) генерирует неадекватное поведение всех переключателей
     this._setEventListeners();
   }
+
+  init() {}
+
+  // main function for calendar table
+  createCalendarTable(year, month) {
+    // prepare data for calendar
+    this._prepareDataForCalendar(year, month);
+
+    // render clendar
+    this._renderCalendarTable();
+  }
+
+  // prepare data for calendar rendering
+  _prepareDataForCalendar(year, month) {
+    // определяем количество дней в месяце
+    this._totalDaysInMonth = 32 - new Date(year, month, 32).getDate();
+
+    // определяет день недели с которой начнется месяц
+    this._serialNumOfFirstDayInMonth = new Date(year, month).getUTCDay();
+
+    // подготовливаем данные для this и рендеринга
+    this._year = year;
+    this._monthNumber = month;
+    this._monthName = months[this._monthNumber];
+
+    // подготовка к подсветке дней в которых есть задания
+    this._daysWithTaskArray = this._getSerialNumbersOfDaysWithTasks();
+    this._uniqueSerialNumbersOfDays = [...new Set(this._daysWithTaskArray)];
+  }
+
 }
