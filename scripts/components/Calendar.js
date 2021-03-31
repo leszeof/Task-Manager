@@ -1,6 +1,8 @@
 export default class Calendar {
   constructor() {
     this._calendarDataBinding(calendarSettings);
+
+    this.init();
   }
 
   // binding calendar elements and classes
@@ -119,12 +121,6 @@ export default class Calendar {
 
     // начинаем непосредственное заполнение ячеек
     this._renderCalendarTable();
-
-    // если отрисованный месяц и год - это текущий, отметить в нем сегодняшний день
-    if (this._monthNumber == new Date().getMonth() &&
-        this._year == new Date().getFullYear()) {
-      this._markTodayInCalendar();
-    }
   }
 
   // render calendar titles
@@ -143,6 +139,12 @@ export default class Calendar {
 
     // заполняем днями-датами все остальные ячейки
     this._insertDateCells();
+
+    // если отрисованный месяц и год - это текущий, отметить в нем сегодняшний день
+    if (this._monthNumber == new Date().getMonth() &&
+        this._year == new Date().getFullYear()) {
+      this._markTodayInCalendar();
+    }
   }
 
   _insertBlankСells() {
@@ -183,12 +185,23 @@ export default class Calendar {
     return emptyDateCell;
   }
 
+  // подсветим сегодняшний день при загрузке и дальнейших переключениях
+  _markTodayInCalendar() {
+    const today = new Date().getDate();
+    const allDays = this._calendarDaysContainer.querySelectorAll(`.${this._dayClass}`);
+    allDays[today - 1].classList.add(this._todayClass);
+  }
+
 }
 
 
 // карта использования функций в календаре
-
 /*
+
+constructor
+  init
+  _calendarDataBinding
+
 createCalendarTable
   1) _prepareDataForCalendar
       _findAllDaysWithTasksForSelectedPeriod
@@ -197,8 +210,12 @@ createCalendarTable
 
   2) _renderCalendar
       _renderCalendarHeaders
-      _fillCalendarTableWithCells
+
+      _renderCalendarTable
         _insertBlankСells
         _insertDateCells
           _getDateCellClone
+        _markTodayInCalendar
+
+
 */
