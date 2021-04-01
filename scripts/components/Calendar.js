@@ -301,10 +301,10 @@ export default class Calendar {
     this._renderTitles(dayNum);
 
     // подготовка данных к рендерингу (фильтрация + сортировка тасков на выбранный день)
-    const dataToRender = this._prepareDataForCardsRendering(dayNum);
+    const correctTasksArray = this._prepareDataForCardsRendering(dayNum);
 
     // сделать рендеринг данных (правильные таски => карточки)
-    const readyCards = this.renderCards(dataToRender);
+    const readyCards = this.renderCards(correctTasksArray);
 
     // передаем их на отрисовку
     this._refreshTaskList(readyCards);
@@ -318,19 +318,42 @@ export default class Calendar {
     this._renderTitles(this._year);
 
     // подготовка данных к рендерингу (фильтрация + сортировка тасков на выбранный месяц)
-    const dataToRender = this._prepareDataForCardsRendering();
+    const correctTasksArray = this._prepareDataForCardsRendering();
 
     // сделать рендеринг данных (правильные таски => карточки)
-    const readyCards = this.renderCards(dataToRender);
+    const readyCards = this.renderCards(correctTasksArray);
 
     // передаем их на отрисовку
     this._refreshTaskList(readyCards);
   }
 
-  // configure (day + month) or (year + month) titles in task list
+  // configure titles in task list
   _renderTitles(value) {
     this._modalWindowTitleMonth.textContent = value;
     this._modalWindowTitleAdditional.textContent = this._monthName;
+  }
+
+  _prepareDataForCardsRendering(day) {
+    // берем "сырой" массив тасков из памяти
+    const dirtyTasksArray = memory.getCurrentTasksArray();
+
+    // собираем таски за конкретный день или месяц
+    let filteredTasksArray;
+
+    //! Нужно свести _filterTasksByDate и _filterTasksByMonth в одну функцию, чтобы не приходилось в ЭТОЙ функции городить огород + делать 2 функции фильтрации
+    if (day) {
+      // отфильтровать сырой массив тасков (по дню)
+      filteredTasksArray = this._filterTasksByDate(day, dirtyTasksArray);
+
+    } else {
+      // иначе отфильтровать сырой массив тасков (по месяцу)
+      filteredTasksArray = this._filterTasksByMonth(dirtyTasksArray);
+    }
+
+    // отсортировать по хронологии отфильтрованный массив тасков
+    const sortedTasksArray = filteredTasksArray.sort(this._sortTasksArray);
+
+    return sortedTasksArray;
   }
 
 }
@@ -383,7 +406,7 @@ createCalendarTable
         _markTodayInCalendar
 
 
-
+*НА ДЕНЬ
 _openSheduleForSelectedDay
   _renderTitles
 
@@ -396,7 +419,7 @@ _openSheduleForSelectedDay
   _refreshTaskList
 
 
-
+*НА МЕСЯЦ
 _openSheduleForSelectedMonth
   _toggleActiveDay
   _renderTitles
