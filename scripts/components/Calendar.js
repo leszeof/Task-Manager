@@ -55,9 +55,11 @@ export default class Calendar {
   init() {
     // календарь
       // создаем верстку дат, отмечаем нынешний день, отмечаем дни в которых есть дела
-      this.createCalendarTable(new Date().getFullYear(), new Date().getMonth());
+    this.createCalendarTable(new Date().getFullYear(), new Date().getMonth());
 
-    //! ЕЩЕ НАДО!
+    // работа с карточками в списке заданий
+      // фильтрация -> сортировка -> рендеринг -> рефреш картинки
+    this._openSheduleForSelectedMonth();
   }
 
   // main function for calendar table initialization
