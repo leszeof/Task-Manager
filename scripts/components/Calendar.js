@@ -327,6 +327,12 @@ export default class Calendar {
     this._refreshTaskList(readyCards);
   }
 
+  // configure (day + month) or (year + month) titles in task list
+  _renderTitles(value) {
+    this._modalWindowTitleMonth.textContent = value;
+    this._modalWindowTitleAdditional.textContent = this._monthName;
+  }
+
 }
 
 //! идея по упрощению:
@@ -341,6 +347,9 @@ export default class Calendar {
 
 constructor
   init
+    createCalendarTable
+    _openSheduleForSelectedMonth
+
   _calendarDataBinding
     _setEventListeners
     1)_changeMonth
