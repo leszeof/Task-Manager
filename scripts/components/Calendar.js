@@ -356,6 +356,35 @@ export default class Calendar {
     return sortedTasksArray;
   }
 
+  _filterTasksByDate(date = 1, dirtyTasksArray) {
+    const min = new Date(this._year, this._monthNumber, date);
+    const max = new Date(this._year, this._monthNumber, +date, 23, 59, 59);
+    console.log(min); // Mon Mar 01 2021 00:00:00
+    console.log(max); // Thu Apr 01 2021 00:00:00
+
+    return dirtyTasksArray.filter(taskItem => {
+      const taskDate = new Date(taskItem.dateObj);
+
+      // вернутся только те таски, которые удовлетворяют условию
+      return taskDate >= min && taskDate <= max
+    })
+  }
+
+    // фильтрация (по месяцу)
+  _filterTasksByMonth(dirtyTasksArray) {
+    const min = new Date(this._year, +this._monthNumber);
+    const max = new Date(this._year, +this._monthNumber + 1);
+    console.log(min); // Sat Mar 06 2021 00:00:00
+    console.log(max); // Sat Mar 06 2021 23:59:59
+
+    return dirtyTasksArray.filter(taskItem => {
+      const taskDate = new Date(taskItem.dateObj);
+
+      // вернутся только те таски, которые удовлетворяют условию
+      return taskDate >= min && taskDate <= max
+    })
+  }
+
 }
 
 //! идея по упрощению:
