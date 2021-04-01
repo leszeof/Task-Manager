@@ -297,6 +297,7 @@ export default class Calendar {
   }
 
   _openSheduleForSelectedDay(dayNum) {
+    //! _openSheduleForSelectedMonth _openSheduleForSelectedDay одинаковое
     // настройка окна с тасками (заголовки)
     this._renderTitles(dayNum);
 
@@ -314,6 +315,7 @@ export default class Calendar {
     // снимаем отметку с активного дня
     this._toggleActiveDay();
 
+    //! _openSheduleForSelectedMonth _openSheduleForSelectedDay одинаковое
     // настройка окна (тексты)
     this._renderTitles(this._year);
 
@@ -334,21 +336,11 @@ export default class Calendar {
   }
 
   _prepareDataForCardsRendering(day) {
-    // берем "сырой" массив тасков из памяти
+    // берем "сырой" массив из памяти
     const dirtyTasksArray = memory.getCurrentTasksArray();
 
-    // собираем таски за конкретный день или месяц
-    let filteredTasksArray;
-
-    //! Нужно свести _filterTasksByDate и _filterTasksByMonth в одну функцию, чтобы не приходилось в ЭТОЙ функции городить огород + делать 2 функции фильтрации
-    if (day) {
-      // отфильтровать сырой массив тасков (по дню)
-      filteredTasksArray = this._filterTasksByDate(day, dirtyTasksArray);
-
-    } else {
-      // иначе отфильтровать сырой массив тасков (по месяцу)
-      filteredTasksArray = this._filterTasksByMonth(dirtyTasksArray);
-    }
+    // фильтруем таски по дню или месяцу
+    const filteredTasksArray = this._filterTasks(day, dirtyTasksArray);
 
     // отсортировать по хронологии отфильтрованный массив тасков
     const sortedTasksArray = filteredTasksArray.sort(this._sortTasksArray);
@@ -356,38 +348,11 @@ export default class Calendar {
     return sortedTasksArray;
   }
 
-  // _filterTasksByDate(date = 1, dirtyTasksArray) {
-  //   const min = new Date(this._year, this._monthNumber, date);
-  //   const max = new Date(this._year, this._monthNumber, +date, 23, 59, 59);
-  //   console.log(min); // Mon Mar 01 2021 00:00:00
-  //   console.log(max); // Thu Apr 01 2021 00:00:00
-
-  //   return dirtyTasksArray.filter(taskItem => {
-  //     const taskDate = new Date(taskItem.dateObj);
-
-  //     // вернутся только те таски, которые удовлетворяют условию
-  //     return taskDate >= min && taskDate <= max
-  //   })
-  // }
-
-    // фильтрация (по месяцу)
-  // _filterTasksByMonth(dirtyTasksArray) {
-  //   const min = new Date(this._year, +this._monthNumber);
-  //   const max = new Date(this._year, +this._monthNumber + 1);
-  //   console.log(min); // Sat Mar 06 2021 00:00:00
-  //   console.log(max); // Sat Mar 06 2021 23:59:59
-
-  //   return dirtyTasksArray.filter(taskItem => {
-  //     const taskDate = new Date(taskItem.dateObj);
-
-  //     // вернутся только те таски, которые удовлетворяют условию
-  //     return taskDate >= min && taskDate <= max
-  //   })
-  // }
-
-  filterTasks(day = undefined, dirtyTasksArray) {
-    let min; // минимальный предел фильтрации
-    let max; // максимальный предел фильтрации
+  //! фильтрация -> сортировка -> рендеринг -> обновление отображения
+    // фильтрация
+  _filterTasks(day = undefined, dirtyTasksArray) {
+    let min;
+    let max;
 
     if (day != undefined) {
       // фильтрация (по дню)
@@ -415,6 +380,8 @@ export default class Calendar {
   // например засунуть их в _prepareDataForCalendar
   // достать из:
   // разбить _changeMonth и _changeYear на мелкие кусочки!
+
+
 
 
 // карта использования функций в календаре
@@ -464,7 +431,7 @@ _openSheduleForSelectedDay
 
   _prepareDataForCardsRendering
     memory.getCurrentTasksArray
-    _filterTasksByDate
+    _filterTasks
     _sortTasksArray
 
   renderCards
@@ -478,7 +445,7 @@ _openSheduleForSelectedMonth
 
   _prepareDataForCardsRendering
     memory.getCurrentTasksArray
-    _filterTasksByMonth
+    _filterTasks
     _sortTasksArray
 
   renderCards
