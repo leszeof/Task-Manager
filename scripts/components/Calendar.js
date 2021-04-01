@@ -373,6 +373,18 @@ export default class Calendar {
     })
   }
 
+    // сортировка
+  _sortTasksArray(taskA, taskB) {
+    if (taskA.dateObj > taskB.dateObj) {
+      return 1;
+    }
+    if (taskA.dateObj < taskB.dateObj) {
+      return -1;
+    }
+
+    return 0;
+  }
+
 }
 
 //! идея по упрощению:
