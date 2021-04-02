@@ -101,7 +101,7 @@ export default class Calendar {
   // return array of days with tasks
   _getSerialNumbersOfDaysWithTasks() {
     const taskArray = memory.getCurrentTasksArray();
-    const arrayOfTasksForSelectedMonth = this._filterTasksByMonth(taskArray);
+    const arrayOfTasksForSelectedMonth = this.filterTasks(taskArray);
 
     const arrayOfDaysWithTasks = arrayOfTasksForSelectedMonth.map(taskObj => {
       return new Date(taskObj.dateObj).getDate();
@@ -441,6 +441,15 @@ export default class Calendar {
   }
 
 }
+
+// что надо
+/*
+1) перейти на день
+2) отметить его как активный
+3) показать список заданий на него
+
+
+*/
 
 
 
