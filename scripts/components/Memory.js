@@ -8,7 +8,7 @@ export default class Memory {
 
   init() {
     // возьмет из localStorage сохраненный массив тасков по ключу calendarMemory
-    // если его там нет (ключа или значения) - создаем пустой массив
+    // если его там нет - создаем пустой массив
     const tasksArr = localStorage.getItem('calendarMemory') || '[]';
 
     // запишет взятый массив в нашу временную память
@@ -20,5 +20,12 @@ export default class Memory {
     this._saveTaskToLocalMemory(newTask);
 
     this._updateLocalStorage();
+  }
+
+  // публичный метод будет отдавать функциям рендеринга массив, чтобы они не лазили в него
+  getCurrentTasksArray() {
+    const arrayOfTasks = localStorage.getItem('calendarMemory') || '[]';
+    // console.log(arrayOfTasks);
+    return JSON.parse(arrayOfTasks);
   }
 }
