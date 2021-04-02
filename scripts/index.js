@@ -52,6 +52,9 @@ export const calendar = new Calendar({
       cellChecker: (day, cell) => {
         calendar._updateDateCellStatus(day, cell);
       },
+      previewHandler: (cardData) => {
+        cardPreviewPopup.open(cardData);
+      }
     });
 
     return newCardObj.generateCard();
@@ -72,7 +75,6 @@ addNewTaskPopup.setEventListeners();
 const cardPreviewPopup = new PopupPreview({
   popupSelector: '.popup-event-preview',
 });
-console.log(cardPreviewPopup);
 cardPreviewPopup.setEventListeners();
 
 // Functions

@@ -1,12 +1,13 @@
 import {months} from '../utils/constants.js';
 export default class Card {
-  constructor({taskData, cardSettings, memoryConnector, cellChecker}) {
+  constructor({taskData, cardSettings, memoryConnector, cellChecker, previewHandler}) {
     this._taskDataBinding(taskData);
     this._cardSettingsBinding(cardSettings);
 
     // class callbacks
     this._memoryConnector = memoryConnector;
     this._cellChecker = cellChecker;
+    this._previewHandler = previewHandler;
   }
 
   // task data for current card
@@ -127,10 +128,8 @@ export default class Card {
     // get full card data
     const cardData = this._getCardData();
 
-    // fill preview popup with card data
-    generatePreviewPopup(cardData);
-
-    openPopup(eventPreviewPopup);
+    // open card preview popup
+    this._previewHandler(cardData);
   }
 
   _deleteButtonHandler() {
@@ -177,6 +176,7 @@ generateCard
   _setEventListeners
     _markAsDone
     _openCardDetails
+      this._previewHandler (callback)
     _deleteButtonHandler
       _memoryConnector (callback)
       _cellChecker (callback)
