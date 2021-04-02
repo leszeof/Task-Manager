@@ -412,6 +412,34 @@ export default class Calendar {
     this._calendarDaysContainer.textContent = '';
   }
 
+  // вызываются снаружи
+  _updateDateCellStatus(day, cell) {
+    // если в дне больше нет заданий других, то огонек надо снять, выделение оставить
+    const taskArray = memory.getCurrentTasksArray();
+    const tasksInDay = this._filterTasks(day, taskArray);
+
+    if (tasksInDay.length === 0) {
+      cell.classList.toggle(this._taskedDayClass);
+    }
+  }
+
+  refreshCalendarAfterNewTaskSubmit(year, month, day) {
+    // стираем календарь
+    this._resetCalendarTableRender();
+
+    // создаем новую таблицу календаря
+    this.createCalendarTable(year, month);
+
+    // из массива ячеек выбираем день (на который создали задание)
+    const dayCell = document.querySelectorAll('.calendar__date')[day - 1];
+
+    // отмечаем день как активный
+    this._toggleActiveDay(dayCell);
+
+    // открываем окно с заданиями на этот день (на который создали задание)
+    this._openSheduleForSelectedDay(day);
+  }
+
 }
 
 
@@ -425,32 +453,33 @@ export default class Calendar {
 
 
 
-// карта использования функций в календаре
+
+// !карта использования функций в календаре
 /*
 
-constructor
+*constructor
   init
     createCalendarTable
     _openSheduleForSelectedMonth
 
   _calendarDataBinding
-    _setEventListeners
-    1)_changeMonth
-        _resetCalendarTableRender
-        createCalendarTable
-        _openSheduleForSelectedMonth
+    _setEventListeners // асинхронка
+      1)_changeMonth
+          _resetCalendarTableRender
+          createCalendarTable
+          _openSheduleForSelectedMonth //! одно и тоже
 
-    2)_changeYear
-        _resetCalendarTableRender
-        createCalendarTable
-        _openSheduleForSelectedMonth
+      2)_changeYear
+          _resetCalendarTableRender
+          createCalendarTable
+          _openSheduleForSelectedMonth //! одно и тоже
 
-    3)(_toggleActiveDay + _openSheduleForSelectedDay)
+      3)(_toggleActiveDay + _openSheduleForSelectedDay)
 
-    4)_openSheduleForSelectedMonth
+      4)_openSheduleForSelectedMonth
 
 
-createCalendarTable
+*createCalendarTable
  1) _prepareDataForCalendar
       _findAllDaysWithTasksForSelectedPeriod
         _getSerialNumbersOfDaysWithTasks
@@ -476,6 +505,7 @@ _openSheduleForSelectedDay
     _sortTasksArray
 
   renderCards
+    new Card
   _refreshTaskList
 
 
@@ -493,6 +523,16 @@ _openSheduleForSelectedMonth
   _refreshTaskList
 
 
+* _updateDateCellStatus
+    memory.getCurrentTasksArray
+    _filterTasksByDate
+
+
+* refreshCalendarAfterNewTask
+    _resetCalendarTableRender
+    createCalendarTable
+    _toggleActiveDay
+    _openSheduleForSelectedDay
 
 
 
