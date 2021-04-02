@@ -17,7 +17,6 @@ export default class Popup {
 
   // close popup
   close() {
-    console.log('tyt');
     this._popupElem.classList.remove('popup_opened');
 
     // delete close popup on escape listener
