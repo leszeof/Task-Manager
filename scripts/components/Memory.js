@@ -43,6 +43,20 @@ export default class Memory {
     // к сожалению придется гонять массив this._dataTasksArray постоянно туда-сюда
     localStorage.setItem('calendarMemory', JSON.stringify(this._dataTasksArray));
   }
+
+  deleteTaskFromLocalStorage(hash) {
+
+    this._dataTasksArray.splice(indexOfTaskInArray, 1);
+
+    for (let i = 0; i < this._dataTasksArray.length; i++) {
+      if (this._dataTasksArray[i].hash == hash) {
+
+        this._dataTasksArray.splice(i, 1);
+      }
+    }
+
+    this._updateLocalStorage();
+  }
 }
 
 //! карта использования функцй
