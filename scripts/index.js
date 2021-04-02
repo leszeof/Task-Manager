@@ -10,7 +10,7 @@ import {
   yearInput,
   timeInput,
   colorInput,
-  colorPseudoInput,
+  colorPseudoInput, //! пока не нужно
   eventPreviewPopup,
   popupTitleElem,
   popupDateElem,
@@ -30,6 +30,8 @@ import {calendarSettings} from './utils/constants.js';
 import Card from './components/Card.js';
 import Task from './components/Task.js';
 import Calendar from './components/Calendar.js';
+
+const calendar = new Calendar(calendarSettings);
 
 // Functions
   // open popup
@@ -54,4 +56,41 @@ closeNewTaskPopupButton.addEventListener('click', () => {
 
 closeEventPreviewPopupButton.addEventListener('click', () => {
   closePopup(eventPreviewPopup);
+});
+
+
+//! по хорошему этим должен заниматься класс ПОПАП + его колбэк
+// функция-обработчик сохранения нового таска (с отрисовкой)
+newTaskFormElement.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  // собрали поля формы, получили объект
+  const rawTaskData = {
+    'title' : topicInput.value,
+    'description' : descriptionInput.value,
+    'year' : yearInput.value,
+    'month' : monthInput.value,
+    'date' : dateInput.value,
+    'time' : timeInput.value,
+  }
+
+  // создали из сырого объекта полноценный таск с хэшем и датой (класс Task)
+  const newTask = new Task(rawTaskData).getFullTaskData();
+
+  // сохраняем новый таск в мемори (массив + LocalStorage) (класс Memory)
+  memory.saveTask(newTask);
+
+  // сбор данных
+  const year = yearInput.value;
+  const month = monthInput.value - 1;
+  const day = dateInput.value;
+
+  // обновляем календарь
+  calendar.refreshCalendarAfterNewTaskSubmit(year, month, day);
+
+  // очищаем форму создания таска
+  newTaskFormElement.reset();
+
+  // закрываем модальное окно
+  closePopup(newTaskPopup);
 });
