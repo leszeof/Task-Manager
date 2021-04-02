@@ -1,24 +1,5 @@
 import {
-  newTaskPopup,
   openNewTaskPopupButton,
-  closeNewTaskPopupButton,
-  newTaskFormElement,
-  topicInput, //! выкинуть все, что не используется
-  descriptionInput,
-  dateInput,
-  monthInput,
-  yearInput,
-  timeInput,
-  colorInput,
-  colorPseudoInput, //! пока не нужно
-  eventPreviewPopup,
-  popupTitleElem,
-  popupDateElem,
-  popupTimeElem,
-  popupDescription,
-  closeEventPreviewPopupButton,
-  deleteEventPreviewButton,
-  completeEventPreviewPopupButton,
   months,
 } from './utils/constants.js';
 
