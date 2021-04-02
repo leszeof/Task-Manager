@@ -1,11 +1,12 @@
 import {months} from '../utils/constants.js';
-import {memory} from '../index.js';
-import {calendar} from '../index.js';
-
 export default class Card {
-  constructor(taskData, cardSettings) {
+  constructor({taskData, cardSettings, memoryConnector, cellChecker}) {
     this._taskDataBinding(taskData);
     this._cardSettingsBinding(cardSettings);
+
+    // class callbacks
+    this._memoryConnector = memoryConnector;
+    this._cellChecker = cellChecker;
   }
 
   // task data for current card
@@ -136,13 +137,14 @@ export default class Card {
     // delete card
     this._cardElem.remove();
 
-    // delete task from calendar memory using hash
-    memory.deleteTaskFromLocalStorage(this._hash);
+    // delete task from calendar memory using hash (use callback function)
+    this._memoryConnector(this._hash);
 
     // re-render calendar
     const day = this._getDay();
-    const cell = document.querySelectorAll('.calendar__date')[day - 1]
-    calendar._updateDateCellStatus(day, cell)
+    const cell = document.querySelectorAll('.calendar__date')[day - 1];
+    // calendar._updateDateCellStatus(day, cell);
+    this._cellChecker(day, cell);
   }
 
   //! в теории можно вынести из класса в utils.js
@@ -176,5 +178,7 @@ generateCard
     _markAsDone
     _openCardDetails
     _deleteButtonHandler
+      _memoryConnector (callback)
+      _cellChecker (callback)
 
 */

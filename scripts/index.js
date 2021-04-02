@@ -38,10 +38,24 @@ export const memory = new Memory();
 export const calendar = new Calendar({
   calendarSettings,
   months,
-  cardRenderer: (taskItem) => {
-    const newCardObj = new Card(taskItem, cardSettings);
+
+  cardRenderer: (taskData) => {
+
+    const newCardObj = new Card({
+      taskData,
+      cardSettings,
+      memoryConnector: (hash) => {
+        memory.deleteTaskFromLocalStorage(hash);
+      },
+      cellChecker: (day, cell) => {
+        console.log('TYT');
+        calendar._updateDateCellStatus(day, cell);
+      }
+    });
+
     return newCardObj.generateCard();
   },
+
   memoryConnector: () => {
     return memory.getCurrentTasksArray();
   }

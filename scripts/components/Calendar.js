@@ -3,6 +3,8 @@ export default class Calendar {
     this._calendarClassesAndElementsBinding(calendarSettings);
 
     this._monthsArr = months;
+
+    // class callbacks
     this._cardRenderer = cardRenderer;
     this._memoryConnector = memoryConnector;
 
@@ -515,7 +517,7 @@ _openSheduleForSelectedDay
     _sortTasksArray
 
   renderCards
-    new Card
+    this._cardRenderer (callback)
   _refreshTaskList
 
 
