@@ -3,6 +3,8 @@ export default class Popup {
     this._popupElem = document.querySelector(popupSelector);
     this._closeButtonElem = this._popupElem.querySelector('.popup__close-button');
 
+    this._handleEscClose = this._handleEscClose.bind(this);
+    this._closeOnOverlayClick = this._closeOnOverlayClick.bind(this);
   }
 
   // open popup
@@ -15,6 +17,7 @@ export default class Popup {
 
   // close popup
   close() {
+    console.log('tyt');
     this._popupElem.classList.remove('popup_opened');
 
     // delete close popup on escape listener
