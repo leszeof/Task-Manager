@@ -18,9 +18,14 @@ export default class Memory {
 
   // публичный метод будет отдавать функциям рендеринга массив, чтобы они не лазили в него
   getCurrentTasksArray() {
-    const arrayOfTasks = localStorage.getItem('calendarMemory') || '[]';
-    // console.log(arrayOfTasks);
-    return JSON.parse(arrayOfTasks);
+    //! было
+    // const arrayOfTasks = localStorage.getItem('calendarMemory') || '[]';
+    // // console.log(arrayOfTasks);
+    // return JSON.parse(arrayOfTasks);
+
+    // а по моему надо вот так
+    console.log(this._dataTasksArray);
+    return this._dataTasksArray;
   }
 
   saveTask(newTask) {
@@ -39,3 +44,21 @@ export default class Memory {
     localStorage.setItem('calendarMemory', JSON.stringify(this._dataTasksArray));
   }
 }
+
+//! карта использования функцй
+/*
+
+init
+  -устанавлвиает значение в localStorage
+  -перекачивает его в оперативный массив (конструктор)
+
+getCurrentTasksArray
+
+saveTask
+  _saveTaskToLocalMemory
+  _updateLocalStorage
+
+
+
+
+ */
