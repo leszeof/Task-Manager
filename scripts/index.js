@@ -32,6 +32,7 @@ import Card from './components/Card.js';
 import Task from './components/Task.js';
 import Calendar from './components/Calendar.js';
 import PopupWithForm from './components/PopupWithForm.js';
+import PopupPreview from './components/PopupPreview.js';
 
 // class instances
 export const memory = new Memory();
@@ -61,11 +62,18 @@ export const calendar = new Calendar({
   }
 });
 
+// Popups
 const addNewTaskPopup = new PopupWithForm({
   popupSelector: '.popup_new-task',
   submitFormHandler: addNewPlaceHandler,
 });
 addNewTaskPopup.setEventListeners();
+
+const cardPreviewPopup = new PopupPreview({
+  popupSelector: '.popup-event-preview',
+});
+console.log(cardPreviewPopup);
+cardPreviewPopup.setEventListeners();
 
 // Functions
 function addNewPlaceHandler(formData) {
