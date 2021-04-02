@@ -31,7 +31,7 @@ import Memory from './components/Memory.js';
 import Card from './components/Card.js';
 import Task from './components/Task.js';
 import Calendar from './components/Calendar.js';
-import Popup from './components/Popup.js';
+import PopupWithForm from './components/PopupWithForm.js';
 
 // class instances
 export const memory = new Memory();
