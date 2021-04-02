@@ -40,3 +40,18 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
+
+// Event listeners (public)
+openNewTaskPopupButton.addEventListener('click', () => {
+  openPopup(newTaskPopup);
+});
+
+closeNewTaskPopupButton.addEventListener('click', () => {
+  newTaskFormElement.reset();
+  closePopup(newTaskPopup);
+});
+
+closeEventPreviewPopupButton.addEventListener('click', () => {
+  closePopup(eventPreviewPopup);
+});
