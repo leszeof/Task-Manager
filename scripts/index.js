@@ -3,7 +3,7 @@ import {
   openNewTaskPopupButton,
   closeNewTaskPopupButton,
   newTaskFormElement,
-  topicInput,
+  topicInput, //! выкинуть все, что не используется
   descriptionInput,
   dateInput,
   monthInput,
@@ -49,9 +49,8 @@ export const calendar = new Calendar({
         memory.deleteTaskFromLocalStorage(hash);
       },
       cellChecker: (day, cell) => {
-        console.log('TYT');
         calendar._updateDateCellStatus(day, cell);
-      }
+      },
     });
 
     return newCardObj.generateCard();
@@ -64,51 +63,26 @@ export const calendar = new Calendar({
 
 const addNewTaskPopup = new PopupWithForm({
   popupSelector: '.popup_new-task',
-  submitFormHandler: () => {
+  submitFormHandler: addNewPlaceHandler,
+});
 
-  }
-})
+console.log(addNewTaskPopup);
+addNewTaskPopup.setEventListeners();
+
 
 // Functions
-  // open popup
-function openPopup(popup) {
-  popup.classList.add('popup_opened');
-}
-  // close popup
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-}
-
-
-// Event listeners (public)
-openNewTaskPopupButton.addEventListener('click', () => {
-  openPopup(newTaskPopup);
-});
-
-closeNewTaskPopupButton.addEventListener('click', () => {
-  newTaskFormElement.reset();
-  closePopup(newTaskPopup);
-});
-
-closeEventPreviewPopupButton.addEventListener('click', () => {
-  closePopup(eventPreviewPopup);
-});
-
-
-//! по хорошему этим должен заниматься класс ПОПАП + его колбэк
-// функция-обработчик сохранения нового таска (с отрисовкой)
-newTaskFormElement.addEventListener('submit', (event) => {
-  event.preventDefault();
-
+function addNewPlaceHandler(formData) {
   // собрали поля формы, получили объект
   const rawTaskData = {
-    'title' : topicInput.value,
-    'description' : descriptionInput.value,
-    'year' : yearInput.value,
-    'month' : monthInput.value,
-    'date' : dateInput.value,
-    'time' : timeInput.value,
-  }
+    'title' : formData.topic,
+    'description' : formData.description,
+    'year' : formData.year,
+    'month' : formData.month,
+    'date' : formData.date,
+    'time' : formData.time,
+  };
+
+  console.log(rawTaskData);
 
   // создали из сырого объекта полноценный таск с хэшем и датой (класс Task)
   const newTask = new Task(rawTaskData).getFullTaskData();
@@ -117,16 +91,49 @@ newTaskFormElement.addEventListener('submit', (event) => {
   memory.saveTask(newTask);
 
   // сбор данных
-  const year = yearInput.value;
-  const month = monthInput.value - 1;
-  const day = dateInput.value;
+  const year = rawTaskData.year;
+  const month = rawTaskData.month - 1;
+  const day = rawTaskData.date;
 
-  // обновляем календарь
-  calendar.refreshCalendarAfterNewTaskSubmit(year, month, day);
+}
 
-  // очищаем форму создания таска
-  newTaskFormElement.reset();
-
-  // закрываем модальное окно
-  closePopup(newTaskPopup);
+// Event listeners (public)
+openNewTaskPopupButton.addEventListener('click', () => {
+  addNewTaskPopup.open();
 });
+
+//! по хорошему этим должен заниматься класс ПОПАП + его колбэк
+// функция-обработчик сохранения нового таска (с отрисовкой)
+// newTaskFormElement.addEventListener('submit', (event) => {
+//   event.preventDefault();
+
+//   // собрали поля формы, получили объект
+//   const rawTaskData = {
+//     'title' : topicInput.value,
+//     'description' : descriptionInput.value,
+//     'year' : yearInput.value,
+//     'month' : monthInput.value,
+//     'date' : dateInput.value,
+//     'time' : timeInput.value,
+//   }
+
+//   // создали из сырого объекта полноценный таск с хэшем и датой (класс Task)
+//   const newTask = new Task(rawTaskData).getFullTaskData();
+
+//   // сохраняем новый таск в мемори (массив + LocalStorage) (класс Memory)
+//   memory.saveTask(newTask);
+
+//   // сбор данных
+//   const year = yearInput.value;
+//   const month = monthInput.value - 1;
+//   const day = dateInput.value;
+
+//   // обновляем календарь
+//   calendar.refreshCalendarAfterNewTaskSubmit(year, month, day);
+
+//   // очищаем форму создания таска
+//   newTaskFormElement.reset();
+
+//   // закрываем модальное окно
+//   closePopup(newTaskPopup);
+// });
