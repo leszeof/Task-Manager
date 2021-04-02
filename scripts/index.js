@@ -62,6 +62,13 @@ export const calendar = new Calendar({
   }
 });
 
+const addNewTaskPopup = new PopupWithForm({
+  popupSelector: '.popup_new-task',
+  submitFormHandler: () => {
+
+  }
+})
+
 // Functions
   // open popup
 function openPopup(popup) {
