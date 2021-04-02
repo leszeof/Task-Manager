@@ -45,15 +45,13 @@ export default class Memory {
   }
 
   deleteTaskFromLocalStorage(hash) {
-
-    this._dataTasksArray.splice(indexOfTaskInArray, 1);
-
-    for (let i = 0; i < this._dataTasksArray.length; i++) {
-      if (this._dataTasksArray[i].hash == hash) {
-
-        this._dataTasksArray.splice(i, 1);
+    const indexOfSearchedTaskInArray = this._dataTasksArray.findIndex((item, index) => {
+      if (item.hash == hash) {
+        return index;
       }
-    }
+    })
+
+    this._dataTasksArray.splice(indexOfSearchedTaskInArray, 1);
 
     this._updateLocalStorage();
   }
@@ -72,7 +70,7 @@ saveTask
   _saveTaskToLocalMemory
   _updateLocalStorage
 
-
-
+deleteTaskFromLocalStorage
+  _updateLocalStorage
 
  */
