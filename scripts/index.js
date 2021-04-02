@@ -32,6 +32,8 @@ import Card from './components/Card.js';
 import Task from './components/Task.js';
 import Calendar from './components/Calendar.js';
 
+// class instances
+const memory = new Memory();
 const calendar = new Calendar(calendarSettings); //! нужно как то months засунуть в Calendar
 
 // Functions
