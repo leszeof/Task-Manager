@@ -21,7 +21,7 @@ export default class PopupPreview extends Popup {
 
     // classes
     this._completeCheckboxActiveClass = 'task-cards__complete-button_active';
-    this._completeLabelActiveClass = 'task-cards__task_complete';
+    this._completeTextActiveClass = 'task-cards__task_complete';
   }
 
   open(cardData) {
@@ -46,8 +46,23 @@ export default class PopupPreview extends Popup {
       this.close();
     });
 
-    // this._completeButton.addEventListener('click', );
+    this._completeButton.addEventListener('click', () => {
+      this._completeTaskHandler();
+    });
   }
 
+  //! можно улучшить поведение
+  _completeTaskHandler() {
+    const alreadyActive = this._completeButton.classList.contains(this._completeCheckboxActiveClass);
 
+    if (alreadyActive) {
+      this._completeCheckboxLabel.textContent = 'не выполнено';
+
+    } else {
+      this._completeCheckboxLabel.textContent = 'выполнено';
+    }
+
+    this._completeButton.classList.toggle(this._completeCheckboxActiveClass);
+    this._popupTitle.classList.toggle(this._completeTextActiveClass);
+  }
 }
