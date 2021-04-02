@@ -151,7 +151,8 @@ export default class Card {
   }
 }
 
-// карта использования функций
+
+//! карта использования функций
 /*
 constructor
   _taskDataBinding
