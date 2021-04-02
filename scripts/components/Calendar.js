@@ -1,12 +1,10 @@
-import {memory} from '../index.js';
-
 export default class Calendar {
-  constructor({calendarSettings, months, cardRenderer}) {
+  constructor({calendarSettings, months, cardRenderer, memoryConnector}) {
     this._calendarClassesAndElementsBinding(calendarSettings);
 
     this._monthsArr = months;
-    console.log(arguments);
     this._cardRenderer = cardRenderer;
+    this._memoryConnector = memoryConnector;
 
     this._setEventListeners();
     this.init();
@@ -104,7 +102,7 @@ export default class Calendar {
 
   // return array of days with tasks
   _getSerialNumbersOfDaysWithTasks() {
-    const taskArray = memory.getCurrentTasksArray();
+    const taskArray = this._memoryConnector();
     const arrayOfTasksForSelectedMonth = this._filterTasks(taskArray);
 
     const arrayOfDaysWithTasks = arrayOfTasksForSelectedMonth.map(taskObj => {
@@ -341,7 +339,7 @@ export default class Calendar {
 
   _prepareDataForCardsRendering(day) {
     // берем "сырой" массив из памяти
-    const dirtyTasksArray = memory.getCurrentTasksArray();
+    const dirtyTasksArray = this._memoryConnector();
 
     // фильтруем таски по дню или месяцу
     const filteredTasksArray = this._filterTasks(dirtyTasksArray, day);
@@ -418,7 +416,7 @@ export default class Calendar {
   // вызываются снаружи
     // если при удалении в дне больше нет заданий других, то огонек надо снять, выделение оставить
   _updateDateCellStatus(day, cell) {
-    const taskArray = memory.getCurrentTasksArray();
+    const taskArray = this._memoryConnector();
     const tasksInDay = this._filterTasks(taskArray, day);
 
     if (tasksInDay.length === 0) {
@@ -512,7 +510,7 @@ _openSheduleForSelectedDay
   _renderTitles
 
   _prepareDataForCardsRendering
-    memory.getCurrentTasksArray
+    this._memoryConnector() (callback)
     _filterTasks
     _sortTasksArray
 
@@ -527,7 +525,7 @@ _openSheduleForSelectedMonth
   _renderTitles
 
   _prepareDataForCardsRendering
-    memory.getCurrentTasksArray
+    this._memoryConnector() (callback)
     _filterTasks
     _sortTasksArray
 
@@ -536,7 +534,7 @@ _openSheduleForSelectedMonth
 
 
 * _updateDateCellStatus
-    memory.getCurrentTasksArray
+    this._memoryConnector() (callback)
     _filterTasksByDate
 
 

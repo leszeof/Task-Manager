@@ -41,6 +41,9 @@ export const calendar = new Calendar({
   cardRenderer: (taskItem) => {
     const newCardObj = new Card(taskItem, cardSettings);
     return newCardObj.generateCard();
+  },
+  memoryConnector: () => {
+    return memory.getCurrentTasksArray();
   }
 });
 
