@@ -31,7 +31,7 @@ import Card from './components/Card.js';
 import Task from './components/Task.js';
 import Calendar from './components/Calendar.js';
 
-const calendar = new Calendar(calendarSettings);
+const calendar = new Calendar(calendarSettings); //! нужно как то months засунуть в Calendar
 
 // Functions
   // open popup

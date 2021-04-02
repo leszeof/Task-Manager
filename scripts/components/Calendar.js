@@ -1,12 +1,17 @@
+// import {months} from './utils/constants.js';
 export default class Calendar {
-  constructor() {
+  constructor(calendarSettings) {
     this._calendarDataBinding(calendarSettings);
 
+    //! скорее всего придется тут хранить или настроить импорты
+    this._months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+
     this.init();
+
   }
 
   // binding calendar elements and classes
-  _calendarDataBinding() {
+  _calendarDataBinding(calendarSettings) {
     // список дней-дат + родительская секция
     this._calendarSection =
         document.querySelector(calendarSettings.calendarSectionSelector);
@@ -82,7 +87,7 @@ export default class Calendar {
     // подготовливаем данные для this и рендеринга
     this._year = year;
     this._monthNumber = month;
-    this._monthName = months[this._monthNumber];
+    this._monthName = this._months[this._monthNumber];
       //! наверное лучше будет как то привязать к классу массив месяцев (или передать или создать внутри)
 
     // собираем инфу про данные о днях в которых есть таски
