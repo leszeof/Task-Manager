@@ -1,11 +1,11 @@
 import {months} from '../utils/constants.js';
 export default class Card {
-  constructor({taskData, cardSettings, memoryConnector, cellChecker, previewHandler}) {
+  constructor({taskData, cardSettings, memoryDeleteHandler, cellChecker, previewHandler}) {
     this._taskDataBinding(taskData);
     this._cardSettingsBinding(cardSettings);
 
     // class callbacks
-    this._memoryConnector = memoryConnector;
+    this._memoryDeleteHandler = memoryDeleteHandler;
     this._cellChecker = cellChecker;
     this._previewHandler = previewHandler;
   }
@@ -137,7 +137,7 @@ export default class Card {
     this._cardElem.remove();
 
     // delete task from calendar memory using hash (use callback function)
-    this._memoryConnector(this._hash);
+    this._memoryDeleteHandler(this._hash);
 
     // re-render calendar
     const day = this._getDay();
@@ -178,7 +178,7 @@ generateCard
     _openCardDetails
       this._previewHandler (callback)
     _deleteButtonHandler
-      _memoryConnector (callback)
+      _memoryDeleteHandler (callback)
       _cellChecker (callback)
 
 */

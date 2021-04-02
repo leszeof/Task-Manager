@@ -418,6 +418,7 @@ export default class Calendar {
   // вызываются снаружи
     // если при удалении в дне больше нет заданий других, то огонек надо снять, выделение оставить
   _updateDateCellStatus(day, cell) {
+    //! console.log('cellChecker -> _updateDateCellStatus');
     const taskArray = this._memoryConnector();
     const tasksInDay = this._filterTasks(taskArray, day);
 

@@ -46,7 +46,7 @@ export const calendar = new Calendar({
     const newCardObj = new Card({
       taskData,
       cardSettings,
-      memoryConnector: (hash) => {
+      memoryDeleteHandler: (hash) => {
         memory.deleteTaskFromLocalStorage(hash);
       },
       cellChecker: (day, cell) => {
@@ -74,6 +74,16 @@ addNewTaskPopup.setEventListeners();
 
 const cardPreviewPopup = new PopupPreview({
   popupSelector: '.popup-event-preview',
+  deleteHandler: ({date, hash}) => {
+
+    memory.deleteTaskFromLocalStorage(hash);
+
+    const cell = document.querySelectorAll('.calendar__date')[date - 1];
+
+    calendar._updateDateCellStatus(date, cell);
+
+    calendar._openSheduleForSelectedDay(date);
+  },
 });
 cardPreviewPopup.setEventListeners();
 

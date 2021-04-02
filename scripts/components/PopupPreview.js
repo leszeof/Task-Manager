@@ -1,9 +1,12 @@
 import Popup from './Popup.js';
 export default class PopupPreview extends Popup {
-  constructor({popupSelector}) {
+  constructor({popupSelector, deleteHandler}) {
     super(popupSelector);
 
     this._popupSettingsBinding();
+
+    // class callbacks
+    this._deleteHandler = deleteHandler;
   }
 
   _popupSettingsBinding() {
@@ -22,6 +25,7 @@ export default class PopupPreview extends Popup {
   }
 
   open(cardData) {
+    this._taskData = cardData;
     this._configurePopup(cardData);
 
     super.open();
@@ -36,6 +40,13 @@ export default class PopupPreview extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
+
+    this._deleteButton.addEventListener('click', () => {
+      this._deleteHandler(this._taskData);
+      this.close();
+    });
+
+    // this._completeButton.addEventListener('click', );
   }
 
 

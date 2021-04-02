@@ -45,6 +45,7 @@ export default class Memory {
   }
 
   deleteTaskFromLocalStorage(hash) {
+    //! console.log('memoryDeleteHandler -> deleteTaskFromLocalStorage');
     const indexOfSearchedTaskInArray = this._dataTasksArray.findIndex((item, index) => {
       if (item.hash == hash) {
         return index;
