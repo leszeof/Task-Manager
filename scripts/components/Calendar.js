@@ -296,8 +296,8 @@ export default class Calendar {
     }
   }
 
+  //! _openSheduleForSelectedMonth _openSheduleForSelectedDay одинаковое
   _openSheduleForSelectedDay(dayNum) {
-    //! _openSheduleForSelectedMonth _openSheduleForSelectedDay одинаковое
     // настройка окна с тасками (заголовки)
     this._renderTitles(dayNum);
 
@@ -311,11 +311,11 @@ export default class Calendar {
     this._refreshTaskList(readyCards);
   }
 
+  //! _openSheduleForSelectedMonth _openSheduleForSelectedDay одинаковое
   _openSheduleForSelectedMonth() {
     // снимаем отметку с активного дня
     this._toggleActiveDay();
 
-    //! _openSheduleForSelectedMonth _openSheduleForSelectedDay одинаковое
     // настройка окна (тексты)
     this._renderTitles(this._year);
 
@@ -385,7 +385,22 @@ export default class Calendar {
     return 0;
   }
 
+  //! вот тут можно заменить колбэком, который связывает классы
+    // рендеринг
+  renderCards(arrayOfTasks) {
+    // собираем массив плашек по отфильтрованному массиву
+    const htmlPlates =  arrayOfTasks.map(taskItem => {
+
+      // возвращаем экземляр отрисованной карточки (li)
+      return new Card(taskItem, cardSettings).generateCard();
+    });
+
+    return htmlPlates;
+  }
+
 }
+
+
 
 //! идея по упрощению:
 // вынести все прочие this моменты в одну функцию (число дней в месяце, какой день "today" и тд)
