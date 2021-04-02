@@ -20,4 +20,23 @@ export default class PopupPreview extends Popup {
     this._completeCheckboxActiveClass = 'task-cards__complete-button_active';
     this._completeLabelActiveClass = 'task-cards__task_complete';
   }
+
+  open(cardData) {
+    this._configurePopup(cardData);
+
+    super.open();
+  }
+
+  _configurePopup({title, description, month, date, hours, minutes}) {
+    this._popupTitle.textContent = title;
+    this._popupDescription.textContent = description;
+    this._popupDate.textContent = `${month} ${date}`;
+    this._popupTime.textContent = `${hours}:${minutes}`;
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+  }
+
+
 }
