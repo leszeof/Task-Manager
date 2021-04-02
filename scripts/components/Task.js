@@ -31,14 +31,13 @@ export default class Task {
 
   // get hash-code for every task
   _generateHashCode() {
-    //может стоит сделать так: new Date().toString()
-    return this._hashCode(this._generateTaskDate());
+    return this._hashCode(this._generateTaskDate().toString());
   }
 
   // hash-code generator
   _hashCode(data) {
-    return [...data.split('')].reduce((hash, char) => {
-      const charCode = char.charCodeAt(0);
+    return data.split('').reduce((hash, char) => {
+      const charCode = char.charCodeAt(0)
       const code = ((hash<<3) - hash * 2)+charCode;
 
       return +code & +code;
