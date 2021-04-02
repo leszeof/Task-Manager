@@ -398,6 +398,20 @@ export default class Calendar {
     return htmlPlates;
   }
 
+  //! при создании класса popup часть работы можно перенести на другой класс
+    // обновление страницы (список заданий)
+  _refreshTaskList(htmlPlates) {
+    // очищаем плашку
+    this._tasksListContainer.textContent = '';
+
+    // заливаем отфильтрованные и отсортированные таски в хронологическом порядке
+    this._tasksListContainer.append(...htmlPlates);
+  }
+
+  _resetCalendarTableRender() {
+    this._calendarDaysContainer.textContent = '';
+  }
+
 }
 
 
