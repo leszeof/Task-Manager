@@ -15,4 +15,10 @@ export default class Memory {
     // или поставит пустой массив как стартовый
     this._dataTasksArray = JSON.parse(tasksArr);
   }
+
+  saveTask(newTask) {
+    this._saveTaskToLocalMemory(newTask);
+
+    this._updateLocalStorage();
+  }
 }
