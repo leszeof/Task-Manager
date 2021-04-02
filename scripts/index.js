@@ -34,7 +34,15 @@ import Calendar from './components/Calendar.js';
 
 // class instances
 export const memory = new Memory();
-export const calendar = new Calendar(calendarSettings); //! нужно как то months засунуть в Calendar
+
+export const calendar = new Calendar({
+  calendarSettings,
+  months,
+  cardRenderer: (taskItem) => {
+    const newCardObj = new Card(taskItem, cardSettings);
+    return newCardObj.generateCard();
+  }
+});
 
 // Functions
   // open popup

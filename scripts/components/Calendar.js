@@ -1,22 +1,20 @@
-import {months} from '../utils/constants.js';
 import {memory} from '../index.js';
-import Card from './Card.js';
-import {cardSettings} from '../utils/constants.js';
 
 export default class Calendar {
-  constructor(calendarSettings) {
-    this._calendarDataBinding(calendarSettings);
+  constructor({calendarSettings, months, cardRenderer}) {
+    this._calendarClassesAndElementsBinding(calendarSettings);
 
-    //! скорее всего придется тут хранить или настроить импорты
-    this._months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+    this._monthsArr = months;
+    console.log(arguments);
+    this._cardRenderer = cardRenderer;
 
+    this._setEventListeners();
     this.init();
-
   }
 
   // binding calendar elements and classes
-  _calendarDataBinding(calendarSettings) {
-    // список дней-дат + родительская секция
+  _calendarClassesAndElementsBinding(calendarSettings) {
+    // контейнер дней-дат + родительская секция
     this._calendarSection =
         document.querySelector(calendarSettings.calendarSectionSelector);
     this._calendarDaysContainer =
@@ -39,7 +37,7 @@ export default class Calendar {
     this._monthArrowRightElem =
         this._calendarSection.querySelector(calendarSettings.monthArrowRightSelector);
 
-    // служебные классы
+    // служебные классы календаря
     this._dayClass = calendarSettings.calendarDayClass;
     this._todayClass = calendarSettings.todayClass;
     this._activeDayClass = calendarSettings.activeDayClass;
@@ -48,17 +46,15 @@ export default class Calendar {
     // темплейт
     this._dateCellTemplateElem = document.querySelector(calendarSettings.dayTemplateSelector);
 
-    // модальное окно с списком тасков
+    // секция со списком тасков (cards window)
     this._modalWindowWithTasks =
         document.querySelector(calendarSettings.tasksForMonthWindowSelector);
     this._tasksListContainer =
         this._modalWindowWithTasks.querySelector(calendarSettings.taskListInModalWindowSelector);
+
+      // cards window titles
     this._modalWindowTitleMonth = this._modalWindowWithTasks.querySelector(calendarSettings.modalTitleYearNameSelector);
     this._modalWindowTitleAdditional = this._modalWindowWithTasks.querySelector(calendarSettings.modalTitleMonthNameSelector);
-
-    // проставляем слушатели на календарь
-      // ! в любом другом месте его вызов (например в createCalendar или_renderCalendar) генерирует неадекватное поведение всех переключателей
-    this._setEventListeners();
   }
 
   init() {
@@ -91,8 +87,7 @@ export default class Calendar {
     // подготовливаем данные для this и рендеринга
     this._year = year;
     this._monthNumber = month;
-    this._monthName = months[this._monthNumber];
-      //! наверное лучше будет как то привязать к классу массив месяцев (или передать или создать внутри)
+    this._monthName = this._monthsArr[this._monthNumber];
 
     // собираем инфу про данные о днях в которых есть таски
     this._findAllDaysWithTasksForSelectedPeriod();
@@ -394,14 +389,13 @@ export default class Calendar {
     return 0;
   }
 
-  //! вот тут можно заменить колбэком, который связывает классы
     // рендеринг
   renderCards(arrayOfTasks) {
     // собираем массив плашек по отфильтрованному массиву
     const htmlPlates =  arrayOfTasks.map(taskItem => {
 
       // возвращаем экземляр отрисованной карточки (li)
-      return new Card(taskItem, cardSettings).generateCard();
+      return this._cardRenderer(taskItem);
     });
 
     return htmlPlates;
@@ -449,7 +443,6 @@ export default class Calendar {
     // открываем окно с заданиями на этот день (на который создали задание)
     this._openSheduleForSelectedDay(day);
   }
-
 }
 
 // что надо
