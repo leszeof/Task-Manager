@@ -1,4 +1,8 @@
-// import {months} from './utils/constants.js';
+import {months} from '../utils/constants.js';
+import {memory} from '../index.js';
+import Card from './Card.js';
+import {cardSettings} from '../utils/constants.js';
+
 export default class Calendar {
   constructor(calendarSettings) {
     this._calendarDataBinding(calendarSettings);
@@ -87,7 +91,7 @@ export default class Calendar {
     // подготовливаем данные для this и рендеринга
     this._year = year;
     this._monthNumber = month;
-    this._monthName = this._months[this._monthNumber];
+    this._monthName = months[this._monthNumber];
       //! наверное лучше будет как то привязать к классу массив месяцев (или передать или создать внутри)
 
     // собираем инфу про данные о днях в которых есть таски
@@ -106,7 +110,7 @@ export default class Calendar {
   // return array of days with tasks
   _getSerialNumbersOfDaysWithTasks() {
     const taskArray = memory.getCurrentTasksArray();
-    const arrayOfTasksForSelectedMonth = this.filterTasks(taskArray);
+    const arrayOfTasksForSelectedMonth = this._filterTasks(taskArray);
 
     const arrayOfDaysWithTasks = arrayOfTasksForSelectedMonth.map(taskObj => {
       return new Date(taskObj.dateObj).getDate();

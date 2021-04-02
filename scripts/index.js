@@ -33,8 +33,8 @@ import Task from './components/Task.js';
 import Calendar from './components/Calendar.js';
 
 // class instances
-const memory = new Memory();
-const calendar = new Calendar(calendarSettings); //! нужно как то months засунуть в Calendar
+export const memory = new Memory();
+export const calendar = new Calendar(calendarSettings); //! нужно как то months засунуть в Calendar
 
 // Functions
   // open popup

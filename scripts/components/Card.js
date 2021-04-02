@@ -1,3 +1,7 @@
+import {months} from '../utils/constants.js';
+import {memory} from '../index.js';
+import {calendar} from '../index.js';
+
 export default class Card {
   constructor(taskData, cardSettings) {
     this._taskDataBinding(taskData);
