@@ -340,7 +340,7 @@ export default class Calendar {
     const dirtyTasksArray = memory.getCurrentTasksArray();
 
     // фильтруем таски по дню или месяцу
-    const filteredTasksArray = this._filterTasks(day, dirtyTasksArray);
+    const filteredTasksArray = this._filterTasks(dirtyTasksArray, day);
 
     // отсортировать по хронологии отфильтрованный массив тасков
     const sortedTasksArray = filteredTasksArray.sort(this._sortTasksArray);
@@ -350,7 +350,7 @@ export default class Calendar {
 
   //! фильтрация -> сортировка -> рендеринг -> обновление отображения
     // фильтрация
-  _filterTasks(day = undefined, dirtyTasksArray) {
+  _filterTasks(dirtyTasksArray, day = undefined) {
     let min;
     let max;
 
@@ -413,16 +413,17 @@ export default class Calendar {
   }
 
   // вызываются снаружи
+    // если при удалении в дне больше нет заданий других, то огонек надо снять, выделение оставить
   _updateDateCellStatus(day, cell) {
-    // если в дне больше нет заданий других, то огонек надо снять, выделение оставить
     const taskArray = memory.getCurrentTasksArray();
-    const tasksInDay = this._filterTasks(day, taskArray);
+    const tasksInDay = this._filterTasks(taskArray, day);
 
     if (tasksInDay.length === 0) {
       cell.classList.toggle(this._taskedDayClass);
     }
   }
 
+    // цепочка действий при сабмите нового таска
   refreshCalendarAfterNewTaskSubmit(year, month, day) {
     // стираем календарь
     this._resetCalendarTableRender();
