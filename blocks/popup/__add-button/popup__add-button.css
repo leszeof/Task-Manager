@@ -22,5 +22,11 @@
 }
 
 .popup__add-button:hover {
-  opacity: .5;
+  opacity: 0.5;
+}
+
+@media (max-width: 360px) {
+  .popup__add-button {
+    margin: 25px 0 0 0;
+  }
 }

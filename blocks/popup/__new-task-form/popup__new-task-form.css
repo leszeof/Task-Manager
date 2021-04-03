@@ -19,5 +19,6 @@
 @media (max-width: 360px) {
   .popup__new-task-form {
     width: 300px;
+    height: 531px;
   }
 }

@@ -5,7 +5,7 @@
   width: 90%;
   font-family: "Inter", sans-serif;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
   text-align: justify;
@@ -14,6 +14,6 @@
 
 @media (max-width: 360px) {
   .popup__label {
-    width: 84%;
+    width: 85%;
   }
 }

@@ -25,3 +25,10 @@
   color: rgba(124, 135, 165, 0.598222);
   font-family: "Inter", sans-serif;
 }
+
+@media (max-width: 360px) {
+  .popup__input {
+    width: 85%;
+    margin: 0 auto 30px auto;
+  }
+}
