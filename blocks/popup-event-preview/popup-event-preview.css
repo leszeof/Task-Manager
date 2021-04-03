@@ -8,7 +8,7 @@
   bottom: 0;
   right: 0;
   margin: 0 auto;
-  padding: 150px 0 0 0;
+  /* padding: 150px 0 0 0; */
   box-sizing: border-box;
   z-index: 3;
   background: rgba(77, 77, 77, 0.52);
