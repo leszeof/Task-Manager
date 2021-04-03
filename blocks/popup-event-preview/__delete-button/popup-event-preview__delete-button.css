@@ -26,3 +26,10 @@
 .popup-event-preview__delete-button:hover {
   opacity: .5;
 }
+
+@media (max-width: 360px) {
+  .popup-event-preview__delete-button {
+    width: 300px;
+    background-position: 89px 11px;
+  }
+}

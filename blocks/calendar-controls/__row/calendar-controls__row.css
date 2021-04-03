@@ -9,3 +9,10 @@
 .calendar-controls__row:last-of-type {
   margin-bottom: 0;
 }
+
+@media (max-width: 360px) {
+  .calendar-controls__row {
+    margin-bottom: 14px;
+  }
+}
+

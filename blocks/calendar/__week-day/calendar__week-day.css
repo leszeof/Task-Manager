@@ -14,3 +14,9 @@
 .calendar__week-day:first-of-type {
   margin-left: 0;
 }
+
+@media (max-width: 360px) {
+  .calendar__week-day {
+    margin-left: 20px;
+  }
+}

@@ -23,3 +23,9 @@
   opacity: .36;
   background-color: #979797;
 }
+
+@media (max-width: 360px) {
+  .popup-event-preview__title {
+    font-size: 16px;
+  }
+}

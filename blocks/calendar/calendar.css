@@ -4,3 +4,9 @@
   flex-direction: column;
   margin-bottom: 25px;
 }
+
+@media (max-width: 360px) {
+  .calendar {
+    margin-bottom: 16px;
+  }
+}

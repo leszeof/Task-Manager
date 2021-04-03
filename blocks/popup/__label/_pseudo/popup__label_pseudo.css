@@ -4,3 +4,9 @@
     box-sizing: border-box;
     width: 35%;
 }
+
+@media (max-width: 360px) {
+  .popup__label_pseudo {
+    margin: 0 0 0 24px;
+  }
+}

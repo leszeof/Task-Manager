@@ -6,3 +6,9 @@
   list-style: none;
   border-bottom: 2px solid #DFDFE4;
 }
+
+@media (max-width: 360px) {
+  .calendar__week-days-list {
+    padding: 0 8px 7px 8px;
+  }
+}

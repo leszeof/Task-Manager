@@ -12,3 +12,12 @@
   line-height: 1.16;
   text-align: center;
 }
+
+@media (max-width: 360px) {
+  .header__title {
+    padding-top: 26px;
+    margin-bottom: 18px;
+    font-size: 22px;
+    font-weight: 500;
+  }
+}

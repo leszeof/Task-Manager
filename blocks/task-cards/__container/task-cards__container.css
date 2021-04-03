@@ -6,3 +6,9 @@
     list-style: none;
     /* overflow: auto; */
 }
+
+@media (max-width: 360px) {
+  .task-cards__container {
+    width: 285px;
+  }
+}

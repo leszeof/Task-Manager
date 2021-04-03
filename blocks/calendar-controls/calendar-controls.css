@@ -1,3 +1,9 @@
 .calendar-controls {
   margin-bottom: 30px;
 }
+
+@media (max-width: 360px) {
+  .calendar-controls {
+    margin-bottom: 25px;
+  }
+}

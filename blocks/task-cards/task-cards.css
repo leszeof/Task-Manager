@@ -16,3 +16,9 @@
   visibility: hidden;
   opacity: 0;
 }
+
+@media (max-width: 360px) {
+  .task-cards {
+    height: 270px;
+  }
+}

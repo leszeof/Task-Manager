@@ -1,25 +1,33 @@
 .popup__form-title {
-    margin: 0;
-    padding: 0 0 30px 15px;
-    box-sizing: border-box;
-    position: relative;
-    font-family: "Inter", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1.16;
-    color: #050505;
-    text-align: justify;
+  margin: 0;
+  padding: 0 15px 30px 15px;
+  box-sizing: border-box;
+  position: relative;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1.16;
+  color: #050505;
+  /* text-align: justify; */
 }
 
 .popup__form-title::after {
-    /* content: ''; */
-    position: absolute;
-    width: 99px;
-    height: 3px;
-    right: 17px;
-    top: 12px;
-    mix-blend-mode: normal;
-    opacity: 0.36;
-    background-color: #979797;
+  /* content: ''; */
+  position: absolute;
+  width: 99px;
+  height: 3px;
+  right: 17px;
+  top: 12px;
+  mix-blend-mode: normal;
+  opacity: 0.36;
+  background-color: #979797;
+}
+
+@media (max-width: 360px) {
+  .popup__form-title {
+    font-weight: 500;
+    font-size: 20px;
+    padding: 0 20px 30px 22px;
+  }
 }

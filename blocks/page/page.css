@@ -1,6 +1,6 @@
 .page {
-  margin: 0 auto;
-  margin-top: 5vh;
+  /* margin: 0 auto; */
+  /* margin-top: 5vh; */
   padding: 0;
   box-sizing: border-box;
   /*justify-content: center;*/
@@ -26,4 +26,17 @@
   box-shadow: 1px 3px 15px 1px rgba(0,0,0,0.74);
   -webkit-box-shadow: 1px 3px 15px 1px rgba(0,0,0,0.74);
   -moz-box-shadow: 1px 3px 15px 1px rgba(0,0,0,0.74);
+}
+
+@media (max-width: 440px) {
+  .page {
+    width: 355px;
+  }
+}
+
+@media (max-width: 360px) {
+  .page {
+    width: 330px;
+    height: 770px;
+  }
 }

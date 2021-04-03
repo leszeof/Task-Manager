@@ -2,3 +2,10 @@
     max-width: 75px;
     margin-right: 20px;
 }
+
+@media (max-width: 360px) {
+  .popup__month {
+    max-width: 80px;
+    margin: 0px 0 45px 27px;
+  }
+}

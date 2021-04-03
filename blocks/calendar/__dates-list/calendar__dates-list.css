@@ -9,3 +9,9 @@
   grid-template-rows: repeat(4, 28px);
   grid-auto-rows: 28px;
 }
+
+@media (max-width: 360px) {
+  .calendar__dates-list {
+    grid-gap: 8px 12px;
+  }
+}
