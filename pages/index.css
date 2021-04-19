@@ -65,7 +65,7 @@
 @import url("../blocks/popup/__year/popup__year.css");
 @import url("../blocks/popup/__add-button/popup__add-button.css");
 @import url("../blocks/popup/__color/popup__color.css");
-@import url("../blocks/popup/_new-task/popup_new-task.css");
+@import url("../blocks/popup-new-task/popup-new-task.css");
 @import url("../blocks/popup/__label-text/popup__label-text.css");
 @import url("../blocks/popup/__pseudo-input/popup__pseudo-input.css");
 @import url("../blocks/popup/__label/_pseudo/popup__label_pseudo.css");
@@ -85,6 +85,15 @@
 @import url("../blocks/popup-event-preview/__delete-button/popup-event-preview__delete-button.css");
 @import url("../blocks/popup/__close-button/_event-preview/popup__close-button_event-preview.css");
 @import url("../blocks/popup-event-preview/__row/popup-event-preview__row.css");
+
+/* confirm popup */
+@import url("../blocks/popup-confirm/popup-confirm.css");
+@import url("../blocks/popup-confirm/__close-button/popup-confirm__close-button.css");
+@import url("../blocks/popup-confirm/__container/popup-confirm__container.css");
+@import url("../blocks/popup-confirm/__title/popup-confirm__title.css");
+@import url("../blocks/popup-confirm/__form/popup-confirm__form.css");
+@import url("../blocks/popup-confirm/__submit-button/popup-confirm__submit-button.css");
+
 
 /* active popup*/
 @import url("../blocks/popup/_opened/popup_opened.css");

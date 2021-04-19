@@ -78,7 +78,7 @@
   </section>
 
   <!-- popup add new task -->
-  <section class="popup popup_new-task">
+  <section class="popup popup-new-task">
     <form class="popup__new-task-form">
       <button class="popup__close-button" type="button" name="close-button"></button>
       <h2 class="popup__form-title">Создать новое задание</h2>
@@ -159,7 +159,18 @@
     </form>
   </section>
 
-  <!-- task card plate template -->
+  <!-- popup confirm delete -->
+  <section class="popup popup-confirm">
+    <div class="popup-container popup-confirm__container">
+      <button class="popup__close-button popup-confirm__close-button" type="button" name="close-button"></button>
+      <h2 class="popup__form-title popup-confirm__title">Удалить это задание?</h2>
+      <form class="popup__form popup-confirm__form">
+        <button class="popup-confirm__submit-button popup__add-button" type="submit">Да</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- task card template -->
   <template class="template-task-card-big">
     <li class="task-cards__card_selected-day">
       <div class="task-cards__row">
@@ -178,6 +189,7 @@
     </li>
   </template>
 
+  <!-- calendar date cell template -->
   <template class="template-calendar-date">
     <li class="calendar__date"></li>
   </template>

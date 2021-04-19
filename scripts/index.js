@@ -44,7 +44,7 @@ export const calendar = new Calendar({
 
 // Popups
 const addNewTaskPopup = new PopupWithForm({
-  popupSelector: '.popup_new-task',
+  popupSelector: '.popup-new-task',
   submitFormHandler: addNewPlaceHandler,
 });
 addNewTaskPopup.setEventListeners();
