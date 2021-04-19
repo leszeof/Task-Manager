@@ -134,7 +134,13 @@ export default class Card {
 
   _deleteButtonHandler() {
     // delete card
-    this._cardElem.remove();
+      // nice animations
+    this._cardElem.style.transition = '0.5s';
+    this._cardElem.style.transform = 'translateX(50%)';
+    this._cardElem.style.opacity = '0';
+    setTimeout( () => {
+      this._cardElem.remove();
+    }, 500);
 
     // delete task from calendar memory using hash (use callback function)
     this._memoryDeleteHandler(this._hash);
