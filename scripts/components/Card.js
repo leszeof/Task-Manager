@@ -143,7 +143,7 @@ export default class Card {
 
   _deleteButtonHandler() {
     // delete task from calendar memory using hash (use callback function)
-    this._deleteCardHandler(this, this._getCardData());
+    this._deleteCardHandler(this._getCardData());
 
     // re-render calendar
     const day = this._getDay();

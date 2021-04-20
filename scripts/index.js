@@ -23,20 +23,20 @@ export const calendar = new Calendar({
   calendarSettings,
   months,
   cardRenderer: (taskData) => {
-    const newCardObj = new Card({
+    const card = new Card({
       taskData,
       cardSettings,
-      deleteCardHandler: (cardToDelete, taskData) => {
-        confirmPopup.open(cardToDelete, taskData);
+      deleteCardHandler: (taskData) => {
+        confirmPopup.open(card, taskData);
       },
       cellCheckerHandler: (day, cell) => {
         calendar._updateDateCellStatus(day, cell);
       },
       previewCardHandler: (cardData) => {
-        cardPreviewPopup.open(cardData);
+        cardPreviewPopup.open(card, cardData);
       }
     });
-    return newCardObj.generateCard();
+    return card.generateCard();
   },
   memoryConnector: () => {
     return memory.getCurrentTasksArray();
@@ -52,18 +52,17 @@ addNewTaskPopup.setEventListeners();
 
 const cardPreviewPopup = new PopupPreview({
   popupSelector: '.popup-event-preview',
-  deleteHandler: ({date, hash}) => {
-    memory.deleteTaskFromLocalStorage(hash);
-    const cell = document.querySelectorAll('.calendar__date')[date - 1];
-    calendar._updateDateCellStatus(date, cell);
-    calendar._openSheduleForSelectedDay(date);
+
+  deleteHandler: (cardToDelete, taskData) => {
+    confirmPopup.open(cardToDelete, taskData);
   },
 });
 cardPreviewPopup.setEventListeners();
 
 const confirmPopup = new PopupConfirm({
   popupSelector: '.popup-confirm',
-  submitFormHandler: (cardToDelete, {hash, date}) => {
+
+  submitFormHandler: (cardToDelete, hash, date) => {
     memory.deleteTaskFromLocalStorage(hash);
     confirmPopup.close();
     setTimeout(() => {
@@ -71,6 +70,10 @@ const confirmPopup = new PopupConfirm({
       const cell = document.querySelectorAll('.calendar__date')[date - 1];
       calendar._updateDateCellStatus(date, cell);
     }, 500);
+
+    if (cardPreviewPopup) {
+      cardPreviewPopup.close();
+    }
   },
 });
 confirmPopup.setEventListeners();
@@ -110,10 +113,10 @@ openNewTaskPopupButton.addEventListener('click', () => {
 
 // 19.04 что еще можно добавить
 /*
-1) при нажатии на корзинку (карточка + превью окно) спрашивать "Удалить это задание?"
-  -- нужно сделать верстку этого попапа
-  -- нужно сделать новый класс
-  -- нужно научить работать его с удалением
+// 1) при нажатии на корзинку (карточка + превью окно) спрашивать "Удалить это задание?"
+//   -- нужно сделать верстку этого попапа (СДЕЛАЛ)
+//   -- нужно сделать новый класс
+//   -- нужно научить работать его с удалением
 // 2) красивые анимации удаления карточки
 3) кнопка редактирования таска + попап к ней + внесение данных в обратную сторону ( в память + в верстку)
 4) каким то образом вставить погоду на выбранный день например (уже больше на дневник будет похоже), леша давал такой проект посмотри

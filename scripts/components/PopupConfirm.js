@@ -1,5 +1,5 @@
 import Popup from './Popup.js';
-class PopupWithConfirm extends Popup {
+class PopupConfirm extends Popup {
   constructor({popupSelector, submitFormHandler}) {
     super(popupSelector);
 
@@ -9,10 +9,11 @@ class PopupWithConfirm extends Popup {
     this._submitFormHandler = submitFormHandler;
   }
 
-  open(cardToDelete, cardID) {
+  open(cardToDelete, {hash, date}) {
     super.open();
     this._cardToDelete = cardToDelete;
-    this._cardID = cardID;
+    this._date = date;
+    this._cardHash = hash;
   }
 
   setEventListeners() {
@@ -20,9 +21,9 @@ class PopupWithConfirm extends Popup {
 
     this._popupForm.addEventListener('submit', (event) => {
       event.preventDefault();
-      this._submitFormHandler(this._cardToDelete, this._cardID);
+      this._submitFormHandler(this._cardToDelete, this._cardHash, this._date);
     });
   }
 }
 
-export default PopupWithConfirm;
+export default PopupConfirm;
