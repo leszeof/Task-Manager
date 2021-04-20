@@ -14,6 +14,7 @@ import Task from './components/Task.js';
 import Calendar from './components/Calendar.js';
 import PopupWithForm from './components/PopupWithForm.js';
 import PopupPreview from './components/PopupPreview.js';
+import PopupConfirm from './components/PopupConfirm.js';
 
 // class instances
 export const memory = new Memory();
@@ -25,13 +26,13 @@ export const calendar = new Calendar({
     const newCardObj = new Card({
       taskData,
       cardSettings,
-      memoryDeleteHandler: (hash) => {
-        memory.deleteTaskFromLocalStorage(hash);
+      deleteCardHandler: (cardToDelete, taskData) => {
+        confirmPopup.open(cardToDelete, taskData);
       },
-      cellChecker: (day, cell) => {
+      cellCheckerHandler: (day, cell) => {
         calendar._updateDateCellStatus(day, cell);
       },
-      previewHandler: (cardData) => {
+      previewCardHandler: (cardData) => {
         cardPreviewPopup.open(cardData);
       }
     });
@@ -59,6 +60,20 @@ const cardPreviewPopup = new PopupPreview({
   },
 });
 cardPreviewPopup.setEventListeners();
+
+const confirmPopup = new PopupConfirm({
+  popupSelector: '.popup-confirm',
+  submitFormHandler: (cardToDelete, {hash, date}) => {
+    memory.deleteTaskFromLocalStorage(hash);
+    confirmPopup.close();
+    setTimeout(() => {
+      cardToDelete.deleteCard();
+      const cell = document.querySelectorAll('.calendar__date')[date - 1];
+      calendar._updateDateCellStatus(date, cell);
+    }, 500);
+  },
+});
+confirmPopup.setEventListeners();
 
 // Functions
 function addNewPlaceHandler(formData) {
