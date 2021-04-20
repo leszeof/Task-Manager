@@ -11,4 +11,18 @@
   background-image: url('../../../images/arrow.svg');
   background-repeat: no-repeat;
   background-size: contain;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+}
+
+.calendar-controls__arrow-left:hover {
+  opacity: 0.9;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }

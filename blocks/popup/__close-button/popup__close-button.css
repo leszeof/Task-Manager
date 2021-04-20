@@ -16,9 +16,13 @@
   cursor: pointer;
   z-index: 5;
   border-top-right-radius: 3px;
+  transition: opacity 0.3s linear;
+  -webkit-transition: opacity 0.3s linear;
+  -moz-transition: opacity 0.3s linear;
+  -ms-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
 }
 
 .popup__close-button:hover {
-  opacity: .5;
-  transition: opacity 2s ease;
+  opacity: 0.6;
 }
