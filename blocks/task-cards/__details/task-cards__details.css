@@ -1,17 +1,22 @@
 .task-cards__details {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-weight: 500;
-    font-style: normal;
-    font-size: 14px;
-    line-height: 1.14;
-    text-align: justify;
-    color: #050505;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: justify;
+  color: #050505;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
 }
 
 .task-cards__details:hover {
-    cursor: pointer;
-    opacity: .5;
-    text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.7;
+  text-decoration: underline;
 }

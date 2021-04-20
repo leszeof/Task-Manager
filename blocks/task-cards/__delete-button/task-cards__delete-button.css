@@ -1,21 +1,31 @@
 .task-cards__delete-button {
-    display: flex;
-    background-image: url('../../../images/delete-icon-red.svg');
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    width: 24px;
-    height: 24px;
-    mix-blend-mode: normal;
-    outline-style: none;
-    border: none;
+  display: flex;
+  background-image: url('../../../images/delete-icon-red.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  mix-blend-mode: normal;
+  outline-style: none;
+  border: none;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
 }
 
 .task-cards__delete-button:hover {
-    cursor: pointer;
-    opacity: 0.7;
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 }

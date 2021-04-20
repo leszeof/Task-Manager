@@ -6,14 +6,26 @@
   border: none;
   background-color: transparent;
   outline: none;
-
   background-image: url('../../../images/arrow.svg');
   background-repeat: no-repeat;
   background-size: contain;
-
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
   -moz-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   -o-transform: rotate(180deg);
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+}
+
+.calendar-controls__arrow-right:hover {
+  opacity: 0.9;
+  transform: rotate(180deg) scale(1.2);
+  -webkit-transform: rotate(180deg) scale(1.2);
+  -moz-transform: rotate(180deg) scale(1.2);
+  -ms-transform: rotate(180deg) scale(1.2);
+  -o-transform: rotate(180deg) scale(1.2);
 }

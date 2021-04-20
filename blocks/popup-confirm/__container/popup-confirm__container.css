@@ -1,0 +1,11 @@
+.popup-confirm__container {
+  height: 125px;
+  padding-left: 21px;
+  padding-top: 20px;
+  padding-right: 21px;
+  width: 290px;
+
+  -webkit-box-shadow: 3px 3px 37px 3px rgba(0,0,0,0.65);
+  -moz-box-shadow: 3px 3px 37px 3px rgba(0,0,0,0.65);
+  box-shadow: 3px 3px 37px 3px rgba(0,0,0,0.65);
+}

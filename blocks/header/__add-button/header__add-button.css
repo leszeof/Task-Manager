@@ -4,10 +4,10 @@
   padding: 0;
   box-sizing: border-box;
   width: 60%;
-  /* height: 50px; */
-  padding: 11px;
-  /* padding-left: 22px; */
-  outline-style: none;
+  /*height: 50px;
+  */padding: 11px;
+  /*padding-left: 22px;
+  */outline-style: none;
   border: none;
   background-color: #ffffff;
   border-radius: 20px;
@@ -17,11 +17,16 @@
   line-height: 1.14;
   color: #221738;
   text-align: center;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
 }
 
 .header__add-button:hover {
   cursor: pointer;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 @media (max-width: 360px) {

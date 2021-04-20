@@ -1,18 +1,23 @@
 .task-cards__complete-button {
-    background-image: url('../../../images/complete-icon-grey.svg');
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    width: 23px;
-    height: 23px;
-    mix-blend-mode: normal;
-    border: none;
-    outline-style: none;
-    padding: 0;
+  background-image: url('../../../images/complete-icon-grey.svg');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 23px;
+  height: 23px;
+  mix-blend-mode: normal;
+  border: none;
+  outline-style: none;
+  padding: 0;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
 }
 
 .task-cards__complete-button:hover {
-    cursor: pointer;
-    background-image: url('../../../images/complete-icon-green.svg');
+  cursor: pointer;
+  background-image: url('../../../images/complete-icon-green.svg');
 }

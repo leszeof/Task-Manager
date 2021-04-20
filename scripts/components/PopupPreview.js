@@ -24,7 +24,8 @@ export default class PopupPreview extends Popup {
     this._completeTextActiveClass = 'task-cards__task_complete';
   }
 
-  open(cardData) {
+  open(cardToDelete, cardData) {
+    this._cardToDelete = cardToDelete;
     this._taskData = cardData;
     this._configurePopup(cardData);
 
@@ -42,8 +43,8 @@ export default class PopupPreview extends Popup {
     super.setEventListeners();
 
     this._deleteButton.addEventListener('click', () => {
-      this._deleteHandler(this._taskData);
-      this.close();
+      this._deleteHandler(this._cardToDelete, this._taskData);
+      // this.close();
     });
 
     this._completeButton.addEventListener('click', () => {

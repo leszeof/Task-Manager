@@ -1,7 +1,7 @@
 .popup-event-preview__delete-button {
   display: block;
   width: 335px;
-  margin-left: -19px;
+  margin-left: -21px;
   margin-top: auto;
   box-sizing: border-box;
   padding: 18px 20px 18px 20px;
@@ -21,10 +21,15 @@
   cursor: pointer;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
 }
 
 .popup-event-preview__delete-button:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 @media (max-width: 360px) {
