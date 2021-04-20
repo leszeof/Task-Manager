@@ -1,13 +1,13 @@
 import {months} from '../utils/constants.js';
 export default class Card {
-  constructor({taskData, cardSettings, memoryDeleteHandler, cellChecker, previewHandler}) {
+  constructor({taskData, cardSettings, deleteCardHandler, cellCheckerHandler, previewCardHandler}) {
     this._taskDataBinding(taskData);
     this._cardSettingsBinding(cardSettings);
 
     // class callbacks
-    this._memoryDeleteHandler = memoryDeleteHandler;
-    this._cellChecker = cellChecker;
-    this._previewHandler = previewHandler;
+    this._deleteCardHandler = deleteCardHandler;
+    this._cellCheckerHandler = cellCheckerHandler;
+    this._previewCardHandler = previewCardHandler;
   }
 
   // task data for current card
@@ -129,27 +129,27 @@ export default class Card {
     const cardData = this._getCardData();
 
     // open card preview popup
-    this._previewHandler(cardData);
+    this._previewCardHandler(cardData);
   }
 
-  _deleteButtonHandler() {
-    // delete card
-      // nice animations
+  deleteCard() {
     this._cardElem.style.transition = '0.5s';
     this._cardElem.style.transform = 'translateX(50%)';
     this._cardElem.style.opacity = '0';
     setTimeout( () => {
       this._cardElem.remove();
     }, 500);
+  }
 
+  _deleteButtonHandler() {
     // delete task from calendar memory using hash (use callback function)
-    this._memoryDeleteHandler(this._hash);
+    this._deleteCardHandler(this, this._getCardData());
 
     // re-render calendar
     const day = this._getDay();
     const cell = document.querySelectorAll('.calendar__date')[day - 1];
     // calendar._updateDateCellStatus(day, cell);
-    this._cellChecker(day, cell);
+    this._cellCheckerHandler(day, cell);
   }
 
   //! в теории можно вынести из класса в utils.js
@@ -184,7 +184,7 @@ generateCard
     _openCardDetails
       this._previewHandler (callback)
     _deleteButtonHandler
-      _memoryDeleteHandler (callback)
-      _cellChecker (callback)
+      _deleteCardHandler (callback)
+      _cellCheckerHandler (callback)
 
 */
